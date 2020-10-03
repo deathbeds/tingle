@@ -1,3 +1,5 @@
+# https://flit.readthedocs.io
+
 [build-system]
 requires = ["flit_core >=2,<4"]
 build-backend = "flit_core.buildapi"

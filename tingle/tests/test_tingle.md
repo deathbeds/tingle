@@ -1,6 +1,5 @@
 # test literate python and markdown
 
-    
     import pytest
     def test_schema():
         import tingle 
