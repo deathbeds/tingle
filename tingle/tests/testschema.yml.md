@@ -23,6 +23,7 @@ an example of a dictionary that has a string property `foo`.
 
 `bar` is another, but it is not required.
 
+        #
 
 it is necessary to use > or | markup for the previous description because of the
 leading tick that breaks the yaml parsers.
