@@ -1,0 +1,13 @@
+[build-system]
+requires = ["flit_core >=2,<4"]
+build-backend = "flit_core.buildapi"
+
+[tool.flit.metadata]
+module = "tingle"
+author = "deathbeds"
+author-email = "tony.fast@gmail.com"
+home-page = "http://github.com/deathbeds/tingle"
+classifiers = ["License :: OSI Approved :: MIT License"]
+
+[tool.flit.entrypoints.pytest11]
+pytest-tingle = "tingle.pytest_"
