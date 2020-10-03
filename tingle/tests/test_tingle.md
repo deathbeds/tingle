@@ -4,7 +4,7 @@
     import pytest
     def test_schema():
         import tingle 
-        with tingle.YAML():
+        with tingle.YAML(lazy=True):
             import tingle.tests.testschema as module
         import jsonschema
         jsonschema.validate(dict(foo="xxx"), module.data)
