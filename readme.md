@@ -32,19 +32,9 @@ Build the docs using jupyter book.
 
             return dict(actions=["jb build ."])
 
+        def task_pdf():
+            return dict(actions=["jb build . --builder pdfhtml"], file_dep=['_toc.yml'], targets=['_build/pdf/book.pdf'])
 
-        class extra_config:
-            """
-        extensions += 'autoapi.extension'.split()
-        autoapi_type = 'python'
-        autoapi_dirs = ['tingle']
-        jupyter_execute_notebooks = "off"
-        """
-
-
-            def append():
-                with open("conf.py", "a") as f:
-                    f.write(extra_config.__doc__)
 
         def task_test():
 
@@ -54,9 +44,21 @@ Test the `tingle` package using `pytest`.
 
 
         def task_sphinx_config():
+            """translate jupyter book configuration to an extended sphinx configuration.
+
+
+        extensions += 'autoapi.extension'.split()
+        autoapi_type = 'python'
+        autoapi_dirs = ['tingle']
+        jupyter_execute_notebooks = "off"
+        """
+            def append():
+                with open("conf.py", "a") as f:
+                    list(map(f.write, task_sphinx_config.__doc__.splitlines(True)[1:]))
+
             return dict(actions=[
                 "jb config sphinx . > conf.py", 
-                extra_config.append,
+                append,
                 "pandoc -f markdown -t rst readme.md > readme.rst"], targets=["conf.py", "readme.rst"], file_dep=["readme.md"]) 
 
         def task_sphinx():
