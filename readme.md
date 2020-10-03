@@ -38,7 +38,7 @@ Build the docs using jupyter book.
         extensions += 'autoapi.extension'.split()
         autoapi_type = 'python'
         autoapi_dirs = ['tingle']
-
+        jupyter_execute_notebooks = "off"
         """
 
 

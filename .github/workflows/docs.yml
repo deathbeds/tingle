@@ -28,5 +28,10 @@ jobs:
         sudo apt install pandoc      
         pip install .
         pip install jupyter-book pyppeteer doit
-        doit sphinx_config
+        doit pdf
         jupyter-book build . --builder pdfhtml
+
+    - uses: actions/upload-artifact@v2
+      with:
+        name: tingle pdf
+        path: _build/pdf/book.pdf
