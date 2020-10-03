@@ -23,9 +23,11 @@ an example of a dictionary that has a string property `foo`.
 
 `bar` is another, but it is not required.
 
-        #
+        # everything after this point is a comment until more code is found.
 
 it is necessary to use > or | markup for the previous description because of the
 leading tick that breaks the yaml parsers.
 
 todo: it is possible use yaml features like anchors and aliases to build rich schema.
+
+        defs: {}
