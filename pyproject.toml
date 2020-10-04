@@ -13,8 +13,8 @@ classifiers = ["License :: OSI Approved :: MIT License"]
 requires=["myst-parser" , "importnb"]
 
 [tool.flit.metadata.requires-extra]
-test = ["pytest", "jsonschema"]
-doc = ["jupyter-book", "pyppeteer",  "doit", "nbval"]
+test = ["pytest", "jsonschema", "nbval"]
+doc = ["jupyter-book", "pyppeteer",  "doit"]
 
 [tool.flit.entrypoints.pytest11]
 pytest-tingle = "tingle.pytest_"
