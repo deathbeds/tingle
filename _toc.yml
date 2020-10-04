@@ -3,8 +3,10 @@
   chapters:
   - file: tingle/readme.md
   - file: tingle/tests/test_tingle.md
+  - file: tingle/parameterize.md
   - file: tingle/weave.md
-  - file: tingle/tests/test_shebang.ipynb
+  
+  - file: tingle/tests/test_cli.ipynb
 - part: literate data files
   chapters:
   - file: tingle/tests/testschema.yml.md
