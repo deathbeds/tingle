@@ -11,5 +11,7 @@
   - file: tingle/tests/test_extension.ipynb
 - part: literate data files
   chapters:
+  - file: tingle/yml.md
+  - file: tingle/tests/testyml.yml.md
   - file: tingle/tests/testschema.yml.md
   # discuss testtemplate in test_shebang
