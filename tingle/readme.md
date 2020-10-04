@@ -1,16 +1,31 @@
 # `tingle` command line interface
 
-        import typer, typing, pathlib
+        import typer, typing, pathlib, tingle
         app = typer.Typer()        
         
-        def main(ctx: typer.Context, file: pathlib.Path, weave: bool=typer.Option(False)):
+        def main(ctx: typer.Context, 
+                file: pathlib.Path, 
+                main: bool=typer.Option(True, "--main/--no-main"),
+                weave: bool=typer.Option(False, "--weave/--no-weave")
+        ):
 
 The command line interface for running documents as code.
 Documents are parameterized by their literal expressions.
             
-            print(vars(ctx))
-            if weave:
-                typer.echo("")
+                for loader in (tingle.Markdown, tingle.RST):
+                        if str(file).endswith(tuple(loader.extensions)):
+                                module = loader.load(file, main=main)
+                                break
+                
+if the weave option is active, show the output
+
+                if weave:
+                        woven = tingle.weave.weave(file.read_text(), **vars(module))
+                        try:
+                                import pygments
+                                woven = pygments.highlight(woven, pygments.lexers.MarkdownLexer(), pygments.formatters.TerminalFormatter())
+                        except: ...
+                        typer.echo(woven)
 
 
         def tangle(file: pathlib.Path, target: str = None):

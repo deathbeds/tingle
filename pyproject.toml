@@ -14,10 +14,13 @@ requires=["myst-parser" , "importnb"]
 
 [tool.flit.metadata.requires-extra]
 test = ["pytest", "jsonschema"]
-doc = ["jupyter-book", "pyppeteer",  "doit"]
+doc = ["jupyter-book", "pyppeteer",  "doit", "nbval"]
 
 [tool.flit.entrypoints.pytest11]
 pytest-tingle = "tingle.pytest_"
 
 [tool.flit.entrypoints.console_scripts]
 tingle = "tingle.__main__:main"
+
+[tool.pytest.ini_options]
+addopts = "--nbval tingle --sanitize-with sanitize.cfg"

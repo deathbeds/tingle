@@ -1,11 +1,9 @@
 #!/usr/bin/env -S tingle --weave
 
-This program has the value {{foo}} for foo.
+This program, named `#{{__name__}}` has the value _{{foo}}_ for foo.
 
 <!--
 
-
         foo = 42
-        print(foo)
 
 -->
