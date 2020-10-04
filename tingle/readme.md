@@ -1,10 +1,10 @@
 # `tingle` command line interface
 
+
         import typer, typing, pathlib, tingle, sys
         
         
         def main(ctx: typer.Context, 
-                
                 file: pathlib.Path, 
                 main: bool=typer.Option(True, "--main/--no-main"),
                 weave: bool=typer.Option(False, "--weave/--no-weave")
@@ -41,6 +41,7 @@ the program is not executed.
         def export():
 
 Export a collection of documents to another format.        
+
 
         app = typer.Typer(
                 no_args_is_help=True,                 

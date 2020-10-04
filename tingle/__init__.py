@@ -6,3 +6,4 @@ from .loaders import *
 
 with Markdown(lazy=True):
     from . import yml, weave, parameterize
+    from . import weave
