@@ -20,7 +20,7 @@ doc = ["jupyter-book", "pyppeteer",  "doit"]
 pytest-tingle = "tingle.pytest_"
 
 [tool.flit.entrypoints.console_scripts]
-tingle = "tingle.__main__:main"
+tingle = "tingle.main:main"
 
 [tool.pytest.ini_options]
-addopts = "--nbval tingle --sanitize-with sanitize.cfg"
+addopts = "--nbval tingle --sanitize-with sanitize.cfg -p no:warnings -p no:importnb -pno:pidgy"

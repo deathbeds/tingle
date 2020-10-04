@@ -20,7 +20,7 @@ class Markdown(LiterateMixin):
     extensions = F".py{format} {format} {format}.ipynb".split()
 
     def code(self, str):
-        return tingle.python.md2py(str)
+        return tingle.util.ipy_transform(tingle.python.md2py(str))
 
     def exec_module(self, module):
         super().exec_module(module)
@@ -33,17 +33,18 @@ class RST(LiterateMixin):
     extensions = F".py.{format} .{format} .{format}.ipynb".split()
 
     def code(self, str):
-        return tingle.python.rst2py(str)
+        return tingle.util.ipy_transform(tingle.python.rst2py(str))
 
 
 class LiterateDataMixin(LiterateMixin):
 
     def code(self, code):
         if self.path.endswith(".md"):
-            return tingle.yml.md2yml(code)
+            code = tingle.yml.md2yml(code)
 
         if self.path.endswith(".rst"):
-            return tingle.yml.rst2yml(code)
+            code = tingle.yml.rst2yml(code)
+
         return code
 
 
@@ -59,3 +60,6 @@ class YAML(LiterateDataMixin):
         super().exec_module(module)
         module._ipython_display_ = lambda:  __import__(
             "IPython").display.display(__import__("IPython").display.JSON(module.data, root=module.__file__))
+
+
+YML = YAML

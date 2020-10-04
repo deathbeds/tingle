@@ -6,6 +6,9 @@
   - file: tingle/parameterize.md
   - file: tingle/weave.md  
   - file: tingle/tests/test_cli.ipynb
+- part: literate computing
+  chapters:
+  - file: tingle/tests/test_extension.ipynb
 - part: literate data files
   chapters:
   - file: tingle/tests/testschema.yml.md
