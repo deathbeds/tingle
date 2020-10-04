@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>My Jupyter Book</title>
+    <title>tingle tangle</title>
     
   <link rel="stylesheet" href="_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
 
@@ -105,6 +105,67 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <p class="caption">
+ <span class="caption-text">
+  running literate programs
+ </span>
+</p>
+<ul class="nav section-nav flex-column">
+ <li class="toctree-l1 toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="readme.html#document-tingle/readme">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     tingle
+    </span>
+   </code>
+   command line interface
+  </a>
+ </li>
+ <li class="toctree-l1 toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="readme.html#document-tingle/tests/test_tingle">
+   test literate python and markdown
+  </a>
+ </li>
+ <li class="toctree-l1 toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="readme.html#document-tingle/weave">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     tingle
+    </span>
+   </code>
+   , tangle, and weave
+  </a>
+ </li>
+ <li class="toctree-l1 toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="readme.html#document-tingle/tests/test_shebang">
+   shebang headers in literate programs.
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  literate data files
+ </span>
+</p>
+<ul class="nav section-nav flex-column">
+ <li class="toctree-l1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="readme.html#document-tingle/tests/testschema.yml">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     tingle
+    </span>
+   </code>
+   documents schema specifications
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -175,6 +236,213 @@ in markdown or rst formats.</p>
         return dict(actions=[&quot;sphinx-build . docs/_build&quot;], file_dep=[&quot;conf.py&quot;], targets=[&quot;docs/_build&quot;])
 </pre></div>
 </div>
+<div class="toctree-wrapper compound">
+<span id="document-tingle/readme"></span><div class="section" id="tingle-command-line-interface">
+<h3><code class="docutils literal notranslate"><span class="pre">tingle</span></code> command line interface<a class="headerlink" href="#tingle-command-line-interface" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    import typer, typing, pathlib, tingle
+    app = typer.Typer()        
+    
+    def main(ctx: typer.Context, 
+            file: pathlib.Path, 
+            main: bool=typer.Option(True, &quot;--main/--no-main&quot;),
+            weave: bool=typer.Option(False, &quot;--weave/--no-weave&quot;)
+    ):
+</pre></div>
+</div>
+<p>The command line interface for running documents as code.
+Documents are parameterized by their literal expressions.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>            for loader in (tingle.Markdown, tingle.RST):
+                    if str(file).endswith(tuple(loader.extensions)):
+                            module = loader.load(file, main=main)
+                            break
+</pre></div>
+</div>
+<p>if the weave option is active, show the output</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>            if weave:
+                    woven = tingle.weave.weave(file.read_text(), **vars(module))
+                    try:
+                            import pygments
+                            woven = pygments.highlight(woven, pygments.lexers.MarkdownLexer(), pygments.formatters.TerminalFormatter())
+                    except: ...
+                    typer.echo(woven)
+
+
+    def tangle(file: pathlib.Path, target: str = None):
+</pre></div>
+</div>
+<p>Translate a document from the document language to a target language;
+the program is not executed.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    def export():
+</pre></div>
+</div>
+<p>Export a collection of documents to another format.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    app.command(context_settings={&quot;allow_extra_args&quot;: True})(main)
+</pre></div>
+</div>
+</div>
+<span id="document-tingle/tests/test_tingle"></span><div class="section" id="test-literate-python-and-markdown">
+<h3>test literate python and markdown<a class="headerlink" href="#test-literate-python-and-markdown" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import pytest
+</pre></div>
+</div>
+<p>tests for the <code class="docutils literal notranslate"><span class="pre">tingle</span></code> package.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def test_imports():
+</pre></div>
+</div>
+<p>test the abilities to import different data and files.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def test_schema():
+    import tingle 
+    with tingle.YAML(lazy=True):
+        import tingle.tests.testschema as module
+    import jsonschema
+    jsonschema.validate(dict(foo=&quot;xxx&quot;), module.data)
+    with pytest.raises(BaseException):
+        jsonschema.validate(dict(), module.data)
+</pre></div>
+</div>
+</div>
+<span id="document-tingle/weave"></span><div class="section" id="tingle-tangle-and-weave">
+<h3><code class="docutils literal notranslate"><span class="pre">tingle</span></code>, tangle, and weave<a class="headerlink" href="#tingle-tangle-and-weave" title="Permalink to this headline">¶</a></h3>
+<p>literate programming is a series of tangle and weave steps. the focus of <code class="docutils literal notranslate"><span class="pre">tingle</span></code>
+is to provide machinery for converting documents to compiled code; this document
+provides a minimal implementation of weaving and templating documents to strings.</p>
+<p>we have to weave different files includes files and notebooks.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import re
+def weave(str, **globals):
+</pre></div>
+</div>
+<p>Pass a set of globals through a string that has jinja templates that can be replaced with values
+in the namespace.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    import jinja2
+    str = strip_shebang(str)
+    str = strip_html_comment(str)
+    return jinja2.Template(str).render(**globals)
+
+def strip_shebang(str):
+    return re.sub(re.compile(r&quot;#!/.+\n&quot;), &quot;&quot;, str)
+
+
+def strip_html_comment(str):
+    return re.sub(&quot;(&lt;!--[\s\S]*--&gt;?)&quot;, &quot;&quot;, str)
+</pre></div>
+</div>
+</div>
+<span id="document-tingle/tests/test_shebang"></span><div class="section" id="shebang-headers-in-literate-programs">
+<h3>shebang headers in literate programs.<a class="headerlink" href="#shebang-headers-in-literate-programs" title="Permalink to this headline">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> documents can begin with a shebang that provide instructions
+on how to run a document as a program. <code class="docutils literal notranslate"><span class="pre">tingle</span></code> shebangs may look like</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/env tingle
+#!/usr/bin/env -S tingle
+#!/usr/bin/env -S tingle --weave
+#!/usr/bin/env -S tingle --no-main
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">IPython</span><span class="o">,</span> <span class="nn">tingle</span><span class="o">,</span> <span class="nn">pathlib</span>
+    <span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">get_ipython</span>
+    <span class="n">ip</span> <span class="o">=</span> <span class="n">get_ipython</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">&quot;testtemplate.md&quot;</span></code> begins with a shebang that includes in the <code class="docutils literal notranslate"><span class="pre">&quot;--weave&quot;</span></code> which applies transclusion before showing the rendered output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>        <span class="p">(</span>
+            <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">tingle</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span>
+            <span class="o">/</span> <span class="s2">&quot;tests&quot;</span> <span class="o">/</span> <span class="s2">&quot;testtemplate.md&quot;</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;#!/usr/bin/env -S tingle --weave&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="c1">#NBVAL_SKIP</span>
+    <span class="k">if</span> <span class="n">ip</span><span class="p">:</span>
+        <span class="o">!</span>chmod +x testtemplate.md
+        <span class="o">!</span>./testtemplate.md
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This program, named <span class=" -Color -Color-Yellow">`#__main__`</span> has the value _42_ for foo.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="c1">#NBVAL_SKIP</span>
+    <span class="k">if</span> <span class="n">ip</span><span class="p">:</span>
+        <span class="o">!</span>./testtemplate.md --no-main
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This program, named <span class=" -Color -Color-Yellow">`#testtemplate.md`</span> has the value _42_ for foo.
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="toctree-wrapper compound">
+<span id="document-tingle/tests/testschema.yml"></span><div class="section" id="tingle-documents-schema-specifications">
+<h3><code class="docutils literal notranslate"><span class="pre">tingle</span></code> documents schema specifications<a class="headerlink" href="#tingle-documents-schema-specifications" title="Permalink to this headline">¶</a></h3>
+<p>it turns out that the literate yaml format provides a keen interface for
+building documents and specifying schema. this demonstrates a sample.</p>
+<div class="section" id="top-level-information">
+<h4>Top level information<a class="headerlink" href="#top-level-information" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    title:
+</pre></div>
+</div>
+<p>a schema written in a literate format.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    required: [foo]
+</pre></div>
+</div>
+</div>
+<div class="section" id="properties">
+<h4>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    properties:
+            foo:
+                    type: string
+                    title: Foo
+                    description:
+</pre></div>
+</div>
+<p>an example of a dictionary that has a string property <code class="docutils literal notranslate"><span class="pre">foo</span></code>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>            bar:
+                    type: number
+                    title: Bar
+                    description: &gt;
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">bar</span></code> is another, but it is not required.</p>
+<div class="section" id="a-note">
+<h5>a note<a class="headerlink" href="#a-note" title="Permalink to this headline">¶</a></h5>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    # everything after this point is a comment until more code is found.
+</pre></div>
+</div>
+<p>it is necessary to use &gt; or | markup for the previous description because of the
+leading tick that breaks the yaml parsers.</p>
+<p>todo: it is possible use yaml features like anchors and aliases to build rich schema.</p>
+</div>
+</div>
+<div class="section" id="definitions">
+<h4>definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    defs: {}
+</pre></div>
+</div>
+</div>
+</div>
+</div>
 </div>
 </div>
 
@@ -212,7 +480,7 @@ in markdown or rst formats.</p>
     <div class="container">
       <p>
         
-          By The Jupyter Book community<br/>
+          By deathbeds<br/>
         
             &copy; Copyright 2020.<br/>
       </p>
