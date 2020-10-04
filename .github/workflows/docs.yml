@@ -3,7 +3,9 @@
 
 name: Build Documentation
 
-on: [push, pull_request]
+on:
+  push:
+    branches: [ master ]
 
 jobs:
   build:
@@ -22,8 +24,7 @@ jobs:
     - name: Build docs
       run: |
         sudo apt install pandoc      
-        pip install .
-        pip install jupyter-book pyppeteer doit
+        pip install .[doc]
         doit pdf
         jupyter-book build . --builder pdfhtml
 

@@ -3,3 +3,6 @@ __version__ = "0.1.0"
 
 from . import md, rst, python, loaders, yml
 from .loaders import *
+
+with Markdown(lazy=True):
+    from . import weave
