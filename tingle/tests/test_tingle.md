@@ -1,6 +1,12 @@
 # test literate python and markdown
 
     import pytest
+    
+tests for the `tingle` package.
+
+    def test_imports():
+test the abilities to import different data and files.
+    
     def test_schema():
         import tingle 
         with tingle.YAML(lazy=True):
