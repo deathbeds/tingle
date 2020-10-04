@@ -4,6 +4,7 @@
         app = typer.Typer()        
         
         def main(ctx: typer.Context, 
+                
                 file: pathlib.Path, 
                 main: bool=typer.Option(True, "--main/--no-main"),
                 weave: bool=typer.Option(False, "--weave/--no-weave")
@@ -12,11 +13,13 @@
 The command line interface for running documents as code.
 Documents are parameterized by their literal expressions.
             
-                for loader in (tingle.Markdown, tingle.RST):
-                        if str(file).endswith(tuple(loader.extensions)):
-                                module = loader.load(file, main=main)
-                                break
-                
+                module, exec = tingle.loaders.Parameterized.load(file, main=main)
+                app = typer.Typer()
+                app.command()(exec)
+                with tingle.util.argv([str(file)] + ctx.args):
+                        try: typer.main.get_command(app).main()
+                        except SystemExit: ...
+
 if the weave option is active, show the output
 
                 if weave:
@@ -37,6 +40,8 @@ the program is not executed.
 
 Export a collection of documents to another format.        
 
-        app.command(context_settings={"allow_extra_args": True})(main)
+        app.command(context_settings={
+                "allow_extra_args": True, "ignore_unknown_options": True
+        })(main)
 
         
