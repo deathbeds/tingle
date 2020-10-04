@@ -28,6 +28,42 @@ class Markdown(LiterateMixin):
             "IPython").display.display(__import__("IPython").display.Markdown(filename=module.__file__))
 
 
+class XO(LiterateMixin):
+    format = ".md"
+    extensions = F".xsh{format} .xsh{format}.ipynb".split()
+
+    @property
+    def execer(self):
+        import xonsh.execer
+        import builtins
+        if hasattr(self, '_execer'):
+            return self._execer
+        if (
+            hasattr(builtins, "__xonsh__")
+            and hasattr(builtins.__xonsh__, "execer")
+            and builtins.__xonsh__.execer is not None
+        ):
+            self._execer = execer = builtins.__xonsh__.execer
+        else:
+            self._execer = xonsh.execer.Execer(unload=False)
+        return self._execer
+
+    def code(self, str):
+        return tingle.util.ipy_transform(tingle.python.md2py(str))
+
+    def parse(self, input):
+        execer = self.execer
+        execer.filename = self.path
+        ctx = {}  # dummy for modules
+        return self.execer.parse(input, ctx, mode='exec',
+                                 filename=self.path, transform=True)
+
+    def exec_module(self, module):
+        super().exec_module(module)
+        module._ipython_display_ = lambda: print(module.__file__) or __import__(
+            "IPython").display.display(__import__("IPython").display.Markdown(filename=module.__file__))
+
+
 class RST(LiterateMixin):
     format = 'rst'
     extensions = F".py.{format} .{format} .{format}.ipynb".split()

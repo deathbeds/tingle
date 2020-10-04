@@ -10,10 +10,10 @@ author = "deathbeds"
 author-email = "tony.fast@gmail.com"
 home-page = "http://github.com/deathbeds/tingle"
 classifiers = ["License :: OSI Approved :: MIT License"]
-requires=["myst-parser" , "importnb"]
+requires=["myst-parser", "importnb", "typer"]
 
 [tool.flit.metadata.requires-extra]
-test = ["pytest", "jsonschema", "nbval", "typer"]
+test = ["pytest", "jsonschema", "nbval", "xonsh"]
 doc = ["jupyter-book", "pyppeteer",  "doit"]
 
 [tool.flit.entrypoints.pytest11]

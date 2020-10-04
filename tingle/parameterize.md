@@ -27,7 +27,7 @@
                 body, annotations = ast.Module([]), ast.Module([])
             while node.body:
                 element = node.body.pop(0)
-                if isinstance(element, ast.AnnAssign) and element.target.id[0].islower():
+                if isinstance(element, ast.Assign) or (isinstance(element, ast.AnnAssign) and element.target.id[0].islower()):
                     try:
                         if element.value:
                             ast.literal_eval(element.value)
@@ -67,13 +67,13 @@
 ### defer module loader
 
         @classmethod
-        def load(cls, filename, dir=None, main=False, loaders=(tingle.Markdown, tingle.RST), **kwargs) -> typing.Tuple[types.ModuleType, typing.Callable]:
-
-
-
-
+        def load(cls, filename, main=False, loaders=(tingle.Markdown, tingle.RST), **kwargs) -> typing.Tuple[types.ModuleType, typing.Callable]:
+            
             import importlib
             import inspect
+            if '.xsh' in str(filename):
+                loaders = (tingle.loaders.XO, ) + loaders
+
             for loader in loaders:
                 if str(filename).endswith(tuple(loader.extensions)):
                     loader = type('tmploader', (loader,), {})
@@ -82,7 +82,6 @@
                     spec = importlib.util.spec_from_loader(
                         str(filename), loader)
                     module = cls.create_module(loader)
-
                     def main(**kwargs):
                         nonlocal loader, module
                         cls.exec_module(loader, module, **kwargs)
@@ -94,24 +93,23 @@ update the function docstring and signature allowing other tools to infer apis.
 
 below we build an cli with `typer`, by modifying the signature here `typer` can infer a cli from the signature.
 
-                    main.__signature__ = inspect.Signature(parameters=[
-                        inspect.Parameter(
-                            k, inspect.Parameter.KEYWORD_ONLY, annotation=v, default=getattr(
-                                module, k)
-                        ) if hasattr(module, k) else inspect.Parameter(
-                            k, inspect.Parameter.POSITIONAL_ONLY, annotation=v
-                        )
-                        for k, v in module.__annotations__.items()
-                    ])
+                    parameters = []
+                    for k in set(dir(module) + list(getattr(module, "__annotations__", {}))):
+                        if not k[0].islower(): continue
+                        kwargs = {}
+                        kind = hasattr(module, k) and inspect.Parameter.KEYWORD_ONLY or inspect.Parameter.POSITIONAL_ONLY
+                        if hasattr(module, k):
+                            kwargs['default'] = getattr(module, k)
+                        if k in getattr(module, "__annotations__", {}):
+                            kwargs['annotation'] = module.__annotations__[k]
+                        parameters += [inspect.Parameter(k, kind, **kwargs)]
+                    main.__signature__ = inspect.Signature(parameters=parameters)
                     return module, main
 
 ### create a command using `typer`
 
         @classmethod
         def command(cls, file, **kwargs):
-
-
-
             import typer
             module, exec = cls.load(file, **kwargs)
             app = typer.Typer(add_completion=False)

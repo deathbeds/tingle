@@ -17,6 +17,10 @@ test the abilities to import different data and files.
         with __import__("tingle").YAML():
             import tingle.tests.testyml
         assert tingle.tests.testyml.__file__.endswith(".md")
+        
+    def test_xsh_import():
+        with __import__("tingle").loaders.XO():
+            import tingle.tests.testxo
 
     def test_schema():
         with tingle.YAML(lazy=True):
