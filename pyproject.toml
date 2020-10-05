@@ -1,3 +1,5 @@
+# https://flit.readthedocs.io
+
 [build-system]
 requires = ["flit_core >=2,<4"]
 build-backend = "flit_core.buildapi"
@@ -8,10 +10,17 @@ author = "deathbeds"
 author-email = "tony.fast@gmail.com"
 home-page = "http://github.com/deathbeds/tingle"
 classifiers = ["License :: OSI Approved :: MIT License"]
-requires=["myst-parser" , "importnb"]
+requires=["myst-parser", "importnb", "typer"]
+
+[tool.flit.metadata.requires-extra]
+test = ["pytest", "jsonschema", "nbval", "xonsh"]
+doc = ["jupyter-book", "pyppeteer",  "doit"]
 
 [tool.flit.entrypoints.pytest11]
 pytest-tingle = "tingle.pytest_"
 
 [tool.flit.entrypoints.console_scripts]
-tingle = "tingle.__main__:main"
+tingle = "tingle.main:main"
+
+[tool.pytest.ini_options]
+addopts = "--nbval tingle --sanitize-with sanitize.cfg -p no:warnings -p no:importnb -pno:pidgy"

@@ -1,1 +1,20 @@
 - file: readme.md
+- part: running literate programs
+  chapters:
+  - file: tingle/readme.md
+  - file: tingle/tests/test_tingle.md
+  - file: tingle/parameterize.md
+  - file: tingle/weave.md  
+  - file: tingle/tests/test_cli.ipynb
+- part: literate computing
+  chapters:
+  - file: tingle/tests/test_extension.ipynb
+- part: literate data files
+  chapters:
+  - file: tingle/yml.md
+  - file: tingle/tests/testyml.yml.md
+  - file: tingle/tests/testschema.yml.md
+  # discuss testtemplate in test_shebang
+- part: sample project
+  chapters:
+  - file: docs/sample/lit_fizz/readme.md

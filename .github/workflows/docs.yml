@@ -21,14 +21,14 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
+    - name: setup
+      run: |
+        git submodule sync --recursive
+        sudo apt install pandoc      
+        pip install .[doc]
     - name: Build docs
       run: |
-        sudo apt install pandoc      
-        pip install .
-        pip install jupyter-book pyppeteer doit
         doit pdf
-        jupyter-book build . --builder pdfhtml
-
     - uses: actions/upload-artifact@v2
       with:
         name: tingle pdf

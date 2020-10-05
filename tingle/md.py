@@ -105,8 +105,7 @@ def doctest(state, startLine, endLine, silent, *, offset=0, continuation=True):
     state.parentType, state.lineMax = "container", nextLine-offset
 
     token = state.push("doctest", "code", 0)
-    token.content = state.src[state.bMarks[startLine]
-        : state.eMarks[state.lineMax]]
+    token.content = state.src[state.bMarks[startLine]: state.eMarks[state.lineMax]]
     token.map = [startLine, state.lineMax]
     state.parentType, state.lineMax, state.line = old_parent, old_line_max, nextLine
 
@@ -141,6 +140,7 @@ class MarkdownIt(markdown_it.MarkdownIt):
 markdown = MarkdownIt().disable('inline')
 markdown.block.ruler.before("code", "doctest", doctest, {"alt": []},)
 markdown.disable("code")
+markdown.disable("html_block")
 markdown.enable("table")
 markdown.block.ruler.after("doctest", "code", code, {"alt": []},)
 markdown.use(markdown_it.extensions.footnote.footnote_plugin)
@@ -154,11 +154,11 @@ markdown.block.ruler.before(
 
 def md2docutils(str):
     global markdown
-    e = {}
-    d = markdown_it.utils.AttrDict()
-    t = markdown.parse(str, d)
-    print(d)
-    u = myst_parser.docutils_renderer.DocutilsRenderer(markdown).render(
-        t, e, d)
-    print(d, e)
-    return u
+    env = markdown_it.utils.AttrDict()
+    tokens = markdown.parse(str, env)
+    import contextlib
+    import io
+    with contextlib.redirect_stderr(io.StringIO()):
+        doc = myst_parser.docutils_renderer.DocutilsRenderer(markdown).render(
+            tokens, {}, env)
+    return doc

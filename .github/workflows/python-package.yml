@@ -21,6 +21,12 @@ jobs:
         python-version: ${{ matrix.python-version }}
     - name: Test with pytest
       run: |
-        pip install .
-        pip install pytest pytest-github-actions-annotate-failures
+        pip install .[test]
+        pip install pytest-github-actions-annotate-failures
         pytest
+    - name: Publish package when tagged.
+      if: github.event_name == 'push' && startsWith(github.event.ref, 'refs/tags') && matrix.python-version == '3.8'
+      uses: pypa/gh-action-pypi-publish@master
+      with:
+        user: docfast
+        password: ${{ secrets.pypi_password }}

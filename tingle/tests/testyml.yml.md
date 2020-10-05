@@ -1,4 +1,4 @@
-# literate yaml files
+# a literate yaml file
 
 this document demonstrates a hybrid markdown/yml syntax. it makes it possible to turn data into stories and stories to data.
 
