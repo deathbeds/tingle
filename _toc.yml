@@ -15,3 +15,6 @@
   - file: tingle/tests/testyml.yml.md
   - file: tingle/tests/testschema.yml.md
   # discuss testtemplate in test_shebang
+- part: sample project
+  chapters:
+  - file: docs/sample/lit_fizz/readme.md
