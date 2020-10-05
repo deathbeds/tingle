@@ -1,0 +1,517 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>using the tingle and tingle.weave extensions. &#8212; tingle tangle</title>
+    
+  <link rel="stylesheet" href="../../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="../../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../../_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../../_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+    <script src="../../_static/jquery.js"></script>
+    <script src="../../_static/underscore.js"></script>
+    <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/language_data.js"></script>
+    <script src="../../_static/togglebutton.js"></script>
+    <script src="../../_static/clipboard.min.js"></script>
+    <script src="../../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">tingle tangle</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../readme.html">
+   tingle tangle
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  running literate programs
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../readme.html">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     tingle
+    </span>
+   </code>
+   command line interface
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="test_tingle.html">
+   test literate python and markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../parameterize.html">
+   parameterize modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../weave.html">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     tingle
+    </span>
+   </code>
+   , tangle, and weave
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  literate data files
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../yml.html">
+   literate data files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="testyml.yml.html">
+   a literate yaml file
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="testschema.yml.html">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     tingle
+    </span>
+   </code>
+   documents schema specifications
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../../_sources/tingle/tests/test_extension.md.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/tingle/tests/test_extension.md.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <a class="colab-button" href="https://colab.research.google.com/github/executablebooks/jupyter-book/blob/master/tingle/tests/test_extension.md.ipynb"><button type="button" class="btn btn-secondary topbarbtn"
+                title="Launch Colab" data-toggle="tooltip" data-placement="left"><img class="colab-button-logo"
+                    src="../../_static/images/logo_colab.png"
+                    alt="Interact on Colab">Colab</button></a>
+        
+        
+    </div>
+</div>
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#weaving-the-cell-output">
+   weaving the cell output.
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#transclusion">
+     transclusion
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#markdown-first-programming">
+   markdown first programming
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#author-note">
+     author note
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+        </nav>
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="using-the-tingle-and-tingle-weave-extensions">
+<h1>using the <code class="docutils literal notranslate"><span class="pre">tingle</span> <span class="pre">and</span> <span class="pre">tingle.weave</span></code> extensions.<a class="headerlink" href="#using-the-tingle-and-tingle-weave-extensions" title="Permalink to this headline">¶</a></h1>
+<p>turn on Markdown first programming mode. this only affects the tangle phase
+of the repl, it does not effect the output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">get_ipython</span>
+    <span class="n">shell</span> <span class="o">=</span> <span class="n">get_ipython</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">shell</span><span class="p">:</span>
+        <span class="o">%</span><span class="k">load_ext</span> tingle
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>with `tingle` mode invoked, cell inputs expect markdown input. even a cell without code, like this one,
+is converted to a python string expression.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>heuristics are applied when `tingle` encounters code blocks in markdown or rst 
+to convert the document language into compiled python.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="weaving-the-cell-output">
+<h2>weaving the cell output.<a class="headerlink" href="#weaving-the-cell-output" title="Permalink to this headline">¶</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>`tingle` provides a minimal opinion for weaving cell outputs into formatted Markdown output.
+
+    if shell:
+        %load_ext tingle.weave
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> provides a minimal opinion for weaving cell outputs into formatted Markdown output.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if shell:
+    %load_ext tingle.weave
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="n">leading</span> <span class="n">blank</span> <span class="n">line</span> <span class="k">with</span> <span class="n">omit</span> <span class="n">the</span> <span class="n">weaving</span> <span class="n">event</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">step</span><span class="o">.</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="k">if</span> <span class="n">shell</span><span class="p">:</span>
+        <span class="o">%</span><span class="k">unload_ext</span> tingle
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if shell:
+    %unload_ext tingle
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">##### back to normal</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;# cells are back to python first&quot;</span><span class="p">)</span>
+
+<span class="c1">###### funny how comments can feel like yelling.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># cells are back to python first
+</pre></div>
+</div>
+<div class="system-message">
+<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/home/runner/work/tingle/tingle/tingle/tests/test_extension.md.ipynb</span>, line 1)</p>
+<p>Non-consecutive header level increase; 0 to 5</p>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="k">if</span> <span class="n">shell</span><span class="p">:</span>
+        <span class="o">%</span><span class="k">unload_ext</span> tingle.weave
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;At this point, where are completely back to the standard `IPython` tangle and weave conventions.&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;At this point, where are completely back to the standard `IPython` tangle and weave conventions.&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="k">if</span> <span class="n">shell</span><span class="p">:</span>
+        <span class="c1"># enter back into the extensions</span>
+        <span class="o">%</span><span class="k">load_ext</span> tingle
+        <span class="o">%</span><span class="k">load_ext</span> tingle.weave
+        <span class="c1"># the shows in the output as code because the registered post_run_cell is invoked.</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if shell:
+    # enter back into the extensions
+    %load_ext tingle
+    %load_ext tingle.weave
+    # the shows in the output as code because the registered post_run_cell is invoked.
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="transclusion">
+<h3>transclusion<a class="headerlink" href="#transclusion" title="Permalink to this headline">¶</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>in `tingle`&#39;s minimal weaving process it does provide templating capabilities. provided by either
+`nbconvert` or `jinja2`.
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p>in <code class="docutils literal notranslate"><span class="pre">tingle</span></code>'s minimal weaving process it does provide templating capabilities. provided by either
+<code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> or <code class="docutils literal notranslate"><span class="pre">jinja2</span></code>.</p>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>the value of `a_variable` is _{{a_variable}}_. we are able to 
+transclude data from the user namespace into the output of the markdown cells
+    
+    a_variable=\
+the following markdown.
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<p>the value of <code class="docutils literal notranslate"><span class="pre">a_variable</span></code> is <em>the following markdown.</em>. we are able to
+transclude data from the user namespace into the output of the markdown cells</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>a_variable=\
+</pre></div>
+</div>
+<p>the following markdown.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="markdown-first-programming">
+<h2>markdown first programming<a class="headerlink" href="#markdown-first-programming" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> and literate computing concepts modify some of the conventional affordances of the notebook.
+typically notebooks are written in separate document and programming languages. while in literate computing
+the document language and narrative are paramount. as a result, markdown cells represent code that is off and code cells represent active code.</p>
+<blockquote>
+<div></div></blockquote>
+<div class="section" id="author-note">
+<h3>author note<a class="headerlink" href="#author-note" title="Permalink to this headline">¶</a></h3>
+<p>i’ve taken always indenting blocks of code in cells so that their representation is the same as a markdown or code cell. this conventional is acceptable overlaps between notebook mode and <code class="docutils literal notranslate"><span class="pre">tingle</span></code>.</p>
+</div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tingle/tests"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By deathbeds<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../../_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
+    
+  </body>
+</html>

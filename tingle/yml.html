@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>literate data files &#8212; tingle tangle</title>
+    
+  <link rel="stylesheet" href="../_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+  <link rel="stylesheet"
+    href="../_static/vendor/open-sans_all/1.44.1/index.css">
+  <link rel="stylesheet"
+    href="../_static/vendor/lato_latin-ext/1.44.1/index.css">
+
+    
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.30270b6e4c972e43c488.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/language_data.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.be0a4a0c39cd630af62a2fcf693f3f06.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="a literate yaml file" href="tests/testyml.yml.html" />
+    <link rel="prev" title="tingle, tangle, and weave" href="weave.html" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+<a class="navbar-brand text-wrap" href="../index.html">
+  
+  
+  <h1 class="site-logo" id="site-title">tingle tangle</h1>
+  
+</a>
+</div>
+
+<form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form>
+
+<nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+  <ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../readme.html">
+   tingle tangle
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  running literate programs
+ </span>
+</p>
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="readme.html">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     tingle
+    </span>
+   </code>
+   command line interface
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tests/test_tingle.html">
+   test literate python and markdown
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="parameterize.html">
+   parameterize modules
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="weave.html">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     tingle
+    </span>
+   </code>
+   , tangle, and weave
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  literate data files
+ </span>
+</p>
+<ul class="current nav sidenav_l1">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   literate data files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tests/testyml.yml.html">
+   a literate yaml file
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="tests/testschema.yml.html">
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     tingle
+    </span>
+   </code>
+   documents schema specifications
+  </a>
+ </li>
+</ul>
+
+</nav>
+
+ <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="row topbar fixed-top container-xl">
+    <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show">
+    </div>
+    <div class="col pl-2 topbar-main">
+        
+        <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+            data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+            aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+            title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-arrow-left"></i>
+            <i class="fas fa-arrow-up"></i>
+        </button>
+        
+        <div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/tingle/yml.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+    
+</div>
+        <!-- Source interaction buttons -->
+
+
+        <!-- Full screen (wrap in <a> to have style consistency -->
+        <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                    class="fas fa-expand"></i></button></a>
+
+        <!-- Launch buttons -->
+
+    </div>
+
+    <!-- Table of contents -->
+    <div class="d-none d-md-block col-md-2 bd-toc show">
+        
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="literate-data-files">
+<h1>literate data files<a class="headerlink" href="#literate-data-files" title="Permalink to this headline">¶</a></h1>
+<p>this document presents a literate programming approach to writing yml files.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import textwrap
+import functools
+
+import tingle
+QUOTES = &quot;&#39;&#39;&#39;&quot;, &#39;&quot;&quot;&quot;&#39;
+
+def continue_lead(object, indent=0, *, body=&quot;&quot;, continuing=True):
+    non_empty = False
+    for line in object.splitlines(True):
+        empty = not line.strip()
+        if empty:
+            body += (&#39; &#39;*indent + &quot;\\&quot; if continuing else &quot;&quot;) + line
+        else:
+            continuing = line.rstrip().endswith(&quot;\\&quot;)
+            body += line
+
+    return body
+
+
+def dedent(str):
+    &quot;&quot;&quot;Dedent a block of non code.&quot;&quot;&quot;
+    str = textwrap.dedent(str)
+    lines = str.splitlines(True)
+    for i, line in enumerate(lines):
+        if line.strip():
+            lines[i] = textwrap.dedent(line)
+            break
+    return &quot;&quot;.join(lines)
+
+
+def quote(str, trailing=&#39;&#39;):
+    &quot;&quot;&quot;Wrap a truple block quotations.&quot;&quot;&quot;
+    quote, length = QUOTES[QUOTES[0] in str], len(str)
+    left, right = length - len(str.lstrip()), len(str.rstrip())
+    if not str[left:right].strip():
+        return str
+    if str[right-1] == &#39;\\&#39;:
+        while str[right-1] == &#39;\\&#39;:
+            right -= 1
+    else:
+        if str[left:right].endswith(quote[0]):
+            quote = {&quot;&#39;&#39;&#39;&quot;: &#39;&quot;&quot;&quot;&#39;, &#39;&quot;&quot;&quot;&#39;: &quot;&#39;&#39;&#39;&quot;}[quote]
+    return str[:left] + quote + str[left:right] + quote + trailing + str[right:]
+
+
+def leading_indent(str):
+    &quot;&quot;&quot;Count the lead indent of a string&quot;&quot;&quot;
+    if not isinstance(str, list):
+        str = str.splitlines(True)
+    for line in str:
+        if line.strip():
+            return len(line) - len(line.lstrip())
+    return 0
+
+
+def trailing_indent(str):
+    &quot;&quot;&quot;Count the lead indent of a string&quot;&quot;&quot;
+    if not isinstance(str, list):
+        str = str.splitlines(True)
+    for line in reversed(str):
+        if line.strip():
+            return len(line) - len(line.lstrip())
+    return 0
+
+
+def filter_literal_blocks(document):
+    for node in document.traverse():
+        if node.tagname == &#39;literal_block&#39; and node.attributes.get(&#39;language&#39;, &quot;&quot;) in {&quot;none&quot;, &quot;&quot;}:
+            yield node
+
+
+def hanging_indent(str, extra_indent):
+    start = len(str)-len(str.lstrip())
+    return str[:start] + &#39; &#39; * extra_indent + str[start:]
+
+
+def md2yml(object, parser=tingle.md.md2docutils):
+    &quot;&quot;&quot;convert text to python using docutils as an intermediate.&quot;&quot;&quot;
+    lines = [(x if x.strip() else x.strip()) +
+            &quot;\n&quot; for x in object.splitlines()]
+    body = &quot;&quot;&quot;&quot;&quot;&quot;
+    least_indent, ending_indent, prior_indent, extra_indent = 0, 0, 0, 0
+    continued, quoted, commented = False, False, False
+    start_line, prior_line, end = 0, 0, len(lines)
+    tokens = list(filter_literal_blocks(parser(object)))
+    for i, node in enumerate(tokens):
+        start_line = node.line
+
+        if node.attributes.get(&#39;language&#39;, &quot;none&quot;) == &quot;none&quot;:
+            start_line -= 1
+
+        # get noncode block
+        noncode = &#39;&#39;.join(lines[prior_line:start_line])
+        noncode = dedent(noncode)
+
+        # get code block
+        end_line = start_line + len(node.rawsource.splitlines())
+
+        code = &#39;&#39;.join(lines[start_line:end_line])
+        if node.attributes.get(&#39;language&#39;, None) == &quot;&quot;:
+            code = textwrap.indent(code, &#39; &#39;*4)
+
+        this_indent = leading_indent(code) - least_indent
+        if not least_indent:
+            # this is base indent for the entire block
+            least_indent = this_indent
+
+        if noncode.strip():
+            # indent the code relative to the prior indent
+            if commented or not body:
+                noncode = textwrap.indent(noncode, &quot;# &quot;)
+            noncode = textwrap.indent(
+                noncode, &quot; &quot;*(least_indent + ending_indent + 4))
+
+            # quote the noncode
+
+        noncode = continue_lead(noncode, least_indent, continuing=continued)
+        body += noncode + code
+
+        commented = lines[end_line-1].lstrip().startswith(&#39;#&#39;)
+
+        # update the line numbers and indents
+        prior_line, prior_indent = end_line, ending_indent
+
+        ending_indent = trailing_indent(code) - least_indent
+
+    noncode = &#39;&#39;.join(lines[prior_line:len(lines)])
+
+    if commented or not body:
+        noncode = textwrap.indent(noncode, &quot;# &quot;)
+
+    noncode = textwrap.indent(
+        noncode, &quot; &quot;*(least_indent + ending_indent + 4))
+
+    body += noncode
+    return textwrap.dedent(body)
+
+
+rst2yml = functools.partial(md2yml, parser=tingle.rst.rst2docutils)
+</pre></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./tingle"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+        </div>
+    </div>
+    
+    
+    <div class='prev-next-bottom'>
+        
+    <a class='left-prev' id="prev-link" href="weave.html" title="previous page"><code class="docutils literal notranslate"><span class="pre">tingle</span></code>, tangle, and weave</a>
+    <a class='right-next' id="next-link" href="tests/testyml.yml.html" title="next page">a literate yaml file</a>
+
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By deathbeds<br/>
+        
+            &copy; Copyright 2020.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+    
+  <script src="../_static/js/index.30270b6e4c972e43c488.js"></script>
+
+
+    
+  </body>
+</html>
