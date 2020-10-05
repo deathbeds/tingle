@@ -105,8 +105,7 @@ def doctest(state, startLine, endLine, silent, *, offset=0, continuation=True):
     state.parentType, state.lineMax = "container", nextLine-offset
 
     token = state.push("doctest", "code", 0)
-    token.content = state.src[state.bMarks[startLine]
-        : state.eMarks[state.lineMax]]
+    token.content = state.src[state.bMarks[startLine]: state.eMarks[state.lineMax]]
     token.map = [startLine, state.lineMax]
     state.parentType, state.lineMax, state.line = old_parent, old_line_max, nextLine
 
@@ -157,5 +156,9 @@ def md2docutils(str):
     global markdown
     env = markdown_it.utils.AttrDict()
     tokens = markdown.parse(str, env)
-    return myst_parser.docutils_renderer.DocutilsRenderer(markdown).render(
-        tokens, {}, env)
+    import contextlib
+    import io
+    with contextlib.redirect_stderr(io.StringIO()):
+        doc = myst_parser.docutils_renderer.DocutilsRenderer(markdown).render(
+            tokens, {}, env)
+    return doc

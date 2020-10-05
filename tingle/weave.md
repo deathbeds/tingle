@@ -24,3 +24,20 @@ in the namespace.
 
     def strip_html_comment(str):
         return re.sub("(<!--[\s\S]*-->?)", "", str)
+
+
+    def post_run_cell(result):
+        import IPython
+        
+        if result.info.raw_cell.splitlines()[0].strip():
+
+            IPython.display.display(IPython.display.Markdown(
+                weave(result.info.raw_cell, **IPython.get_ipython().user_ns)
+            ))
+    
+    def load_ipython_extension(shell):
+        shell.events.register(post_run_cell.__name__, post_run_cell)
+    def unload_ipython_extension(shell):
+        shell.events.unregister(post_run_cell.__name__, post_run_cell)
+
+
