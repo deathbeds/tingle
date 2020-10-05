@@ -17,5 +17,6 @@
   # discuss testtemplate in test_shebang
 - part: sample project
   chapters:
+  - file: docs/sample/about-sample.md
   - file: docs/sample/readme.md
   - file: docs/sample/lit_fizz/readme.md
