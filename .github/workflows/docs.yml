@@ -28,7 +28,7 @@ jobs:
         pip install .[doc]
     - name: Build docs
       run: |
-        doit pdf
+        doit pdf book -n2
     - uses: actions/upload-artifact@v2
       with:
         name: tingle pdf
