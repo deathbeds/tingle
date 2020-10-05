@@ -1,6 +1,7 @@
 # literate computing and programming
 
-`tingle` is inspired by the need to supplement stories with computation and hypermedia; it unifies ideas in [literate programming] and [literate computing].
+`tingle` is inspired by the need to supplement stories with computation and hypermedia; it unifies ideas in [literate programming] and [literate computing]. 
+this code follows a long of history of projects attempting to enhance different aspects of [literate computing].
 
 ## application
 
