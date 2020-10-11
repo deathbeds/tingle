@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>tingle tangle &#8212; tingle tangle</title>
     
-  <link rel="stylesheet" href="_static/css/index.d431a4ee1c1efae0e38bdfebc22debff.css">
+  <link rel="stylesheet" href="_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
     
   <link rel="stylesheet"
@@ -25,7 +25,7 @@
     href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/sphinx-book-theme.bfb7730f9caf2ec0b46a44615585038c.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
@@ -34,7 +34,7 @@
     <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
     <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
     
-  <link rel="preload" as="script" href="_static/js/index.30270b6e4c972e43c488.js">
+  <link rel="preload" as="script" href="_static/js/index.3da636dd464baa7582d2.js">
 
     <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -229,7 +229,8 @@
 
         <!-- Full screen (wrap in <a> to have style consistency -->
         <a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
-                data-placement="bottom" onclick="toggleFullScreen()" title="Fullscreen mode"><i
+                data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+                title="Fullscreen mode"><i
                     class="fas fa-expand"></i></button></a>
 
         <!-- Launch buttons -->
@@ -247,6 +248,17 @@
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#importing-literate-programs-and-data">
    importing literate programs and data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-tingle-extension">
+   the
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     tingle
+    </span>
+   </code>
+   extension
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -288,6 +300,19 @@ in markdown or rst formats.</p>
 </pre></div>
 </div>
 </div>
+<div class="section" id="the-tingle-extension">
+<h2>the <code class="docutils literal notranslate"><span class="pre">tingle</span></code> extension<a class="headerlink" href="#the-tingle-extension" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-ipython notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">load_ext</span> tingle
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> is an <code class="docutils literal notranslate"><span class="pre">IPython</span></code> extension that makes small modifications to the interactive computing experience.</p>
+<ol class="simple">
+<li><p>allows markdown input in cells, there is no weaving step, see <code class="docutils literal notranslate"><span class="pre">nowidget</span></code> for more on weaving.</p></li>
+<li><p>top level returns</p></li>
+<li><p>emojis</p></li>
+</ol>
+<p>see the <a class="reference internal" href="tingle/extension.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&quot;extension.md&quot;</span></code></span></a></p>
+</div>
 <div class="section" id="developing">
 <h2>developing<a class="headerlink" href="#developing" title="Permalink to this headline">¶</a></h2>
 <p>the tasks below require <code class="docutils literal notranslate"><span class="pre">doit</span></code>, <code class="docutils literal notranslate"><span class="pre">#pip</span> <span class="pre">install</span> <span class="pre">doit</span></code>.</p>
@@ -304,30 +329,8 @@ in markdown or rst formats.</p>
     def task_test():
 </pre></div>
 </div>
-<p>Test the <code class="docutils literal notranslate"><span class="pre">tingle</span></code> package using <code class="docutils literal notranslate"><span class="pre">pytest</span></code>.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        return dict(actions=[&quot;pytest -pno:pytest-pidgy&quot;])
-
-
-    def task_sphinx_config():
-        &quot;&quot;&quot;translate jupyter book configuration to an extended sphinx configuration.
-
-
-    extensions += &#39;autoapi.extension&#39;.split()
-    autoapi_type = &#39;python&#39;
-    autoapi_dirs = [&#39;tingle&#39;]
-    jupyter_execute_notebooks = &quot;off&quot;
-    &quot;&quot;&quot;
-        def append():
-            with open(&quot;conf.py&quot;, &quot;a&quot;) as f:
-                list(map(f.write, task_sphinx_config.__doc__.splitlines(True)[1:]))
-
-        return dict(actions=[
-            &quot;jb config sphinx . &gt; conf.py&quot;, 
-            append,
-            &quot;pandoc -f markdown -t rst readme.md &gt; readme.rst&quot;], targets=[&quot;conf.py&quot;, &quot;readme.rst&quot;], file_dep=[&quot;readme.md&quot;]) 
-
-    def task_sphinx():
-        return dict(actions=[&quot;sphinx-build . docs/_build&quot;], file_dep=[&quot;conf.py&quot;], targets=[&quot;docs/_build&quot;])
+<p>test the <code class="docutils literal notranslate"><span class="pre">tingle</span></code> package using <code class="docutils literal notranslate"><span class="pre">pytest</span></code>. extra pytest arguments are included in <code class="docutils literal notranslate"><span class="pre">&quot;pyproject.toml&quot;</span></code> meaning we can use the top-level <code class="docutils literal notranslate"><span class="pre">pytest</span></code> execution.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        return dict(actions=[&quot;pytest&quot;])
 </pre></div>
 </div>
 <div class="toctree-wrapper compound">
@@ -389,7 +392,7 @@ in markdown or rst formats.</p>
     </div>
 
     
-  <script src="_static/js/index.30270b6e4c972e43c488.js"></script>
+  <script src="_static/js/index.3da636dd464baa7582d2.js"></script>
 
 
     

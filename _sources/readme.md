@@ -21,6 +21,20 @@ in markdown or rst formats.
         with tingle.loaders.Markdown():
             ...
 
+## the `tingle` extension
+
+```ipython
+%load_ext tingle
+```
+
+`tingle` is an `IPython` extension that makes small modifications to the interactive computing experience.
+
+1. allows markdown input in cells, there is no weaving step, see `nowidget` for more on weaving.
+2. top level returns
+3. emojis
+
+see the [`"extension.md"`](tingle/extension.md)
+
 
 ## developing
 
@@ -38,28 +52,6 @@ Build the docs using jupyter book.
 
         def task_test():
 
-Test the `tingle` package using `pytest`.
+test the `tingle` package using `pytest`. extra pytest arguments are included in `"pyproject.toml"` meaning we can use the top-level `pytest` execution.
 
-            return dict(actions=["pytest -pno:pytest-pidgy"])
-
-
-        def task_sphinx_config():
-            """translate jupyter book configuration to an extended sphinx configuration.
-
-
-        extensions += 'autoapi.extension'.split()
-        autoapi_type = 'python'
-        autoapi_dirs = ['tingle']
-        jupyter_execute_notebooks = "off"
-        """
-            def append():
-                with open("conf.py", "a") as f:
-                    list(map(f.write, task_sphinx_config.__doc__.splitlines(True)[1:]))
-
-            return dict(actions=[
-                "jb config sphinx . > conf.py", 
-                append,
-                "pandoc -f markdown -t rst readme.md > readme.rst"], targets=["conf.py", "readme.rst"], file_dep=["readme.md"]) 
-
-        def task_sphinx():
-            return dict(actions=["sphinx-build . docs/_build"], file_dep=["conf.py"], targets=["docs/_build"])
+            return dict(actions=["pytest"])
