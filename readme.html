@@ -114,21 +114,6 @@
    test literate python and markdown
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tingle/parameterize.html">
-   parameterize modules
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tingle/weave.html">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     tingle
-    </span>
-   </code>
-   , tangle, and weave
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -262,6 +247,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-does-it-do">
+   what does it do?
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#developing">
    developing
   </a>
@@ -281,15 +271,10 @@
                 
   <div class="section" id="tingle-tangle">
 <h1><code class="docutils literal notranslate"><span class="pre">tingle</span></code> tangle<a class="headerlink" href="#tingle-tangle" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> is a library to <em>tangle</em> modern markup and data languages
-into python programs. <em>tangle</em> is a concept from literate programming
-that describes converting document into compiled program languages.</p>
-<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> allows folks to think different about their literature that
-can serve alternative roles as programs and data.</p>
-<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> uses <code class="docutils literal notranslate"><span class="pre">docutils</span></code> and <code class="docutils literal notranslate"><span class="pre">myst_parser</span></code> to parse RST and Markdown to
-intermediate representations as <code class="docutils literal notranslate"><span class="pre">docutils</span></code> documents. from the <code class="docutils literal notranslate"><span class="pre">docutils</span></code>
-document heuristics are applied to transform the document language to
-python or yml files.</p>
+<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> is a library to <strong>import</strong> modern markup and data languages
+into python programs. it provides machinery to <em>tangle</em> code; a concept from literate programming that describes converting document into compiled program languages.</p>
+<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> allows folks to think about literature that can serve as programs and data.</p>
+<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> brings the ability to <strong>import</strong> and test markdown, yaml, json, images, xonsh, and lisp literate programs as python modules.</p>
 <p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> is a <code class="docutils literal notranslate"><span class="pre">pytest</span></code> extension that can test literate programs written
 in markdown or rst formats.</p>
 <div class="section" id="importing-literate-programs-and-data">
@@ -311,7 +296,15 @@ in markdown or rst formats.</p>
 <li><p>top level returns</p></li>
 <li><p>emojis</p></li>
 </ol>
-<p>see the <a class="reference internal" href="tingle/extension.html"><span class="doc std std-doc"><code class="docutils literal notranslate"><span class="pre">&quot;extension.md&quot;</span></code></span></a></p>
+<p>see the <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">&quot;extension.md&quot;</span></code></span></p>
+</div>
+<div class="section" id="what-does-it-do">
+<h2>what does it do?<a class="headerlink" href="#what-does-it-do" title="Permalink to this headline">¶</a></h2>
+<p>the import discovery hooks are implemented in the <code class="docutils literal notranslate"><span class="pre">importnb</span></code> package. <code class="docutils literal notranslate"><span class="pre">tingle</span></code> is specifically concerned with the need to <strong>tangle</strong> input to source code.</p>
+<p>it uses <code class="docutils literal notranslate"><span class="pre">docutils</span></code> and <code class="docutils literal notranslate"><span class="pre">myst_parser</span></code> to parse RST and Markdown to
+intermediate representations as <code class="docutils literal notranslate"><span class="pre">docutils</span></code> documents. from the <code class="docutils literal notranslate"><span class="pre">docutils</span></code>
+document heuristics are applied to transform the document language to
+python or yml files.</p>
 </div>
 <div class="section" id="developing">
 <h2>developing<a class="headerlink" href="#developing" title="Permalink to this headline">¶</a></h2>
