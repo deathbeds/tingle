@@ -29,6 +29,6 @@ def ipy_transform(code):
     try:
         import IPython
         code = IPython.core.inputtransformer2.TransformerManager().transform_cell(code)
-    except:
+    except BaseException:
         ...
     return code
