@@ -1,16 +1,12 @@
 # `tingle` tangle
 
-`tingle` is a library to _tangle_ modern markup and data languages
-into python programs. _tangle_ is a concept from literate programming
-that describes converting document into compiled program languages.
+`tingle` is a library to __import__ modern markup and data languages
+into python programs. it provides machinery to _tangle_ code; a concept from literate programming that describes converting document into compiled program languages.
 
-`tingle` allows folks to think different about their literature that
-can serve alternative roles as programs and data.
+`tingle` allows folks to think about literature that can serve as programs and data.
 
-`tingle` uses `docutils` and `myst_parser` to parse RST and Markdown to 
-intermediate representations as `docutils` documents. from the `docutils`
-document heuristics are applied to transform the document language to
-python or yml files.
+`tingle` brings the ability to __import__ and test markdown, yaml, json, images, xonsh, and lisp literate programs as python modules.
+
 
 `tingle` is a `pytest` extension that can test literate programs written
 in markdown or rst formats.
@@ -34,6 +30,16 @@ in markdown or rst formats.
 3. emojis
 
 see the [`"extension.md"`](tingle/extension.md)
+
+## what does it do?
+
+the import discovery hooks are implemented in the `importnb` package. `tingle` is specifically concerned with the need to __tangle__ input to source code.
+
+it uses `docutils` and `myst_parser` to parse RST and Markdown to 
+intermediate representations as `docutils` documents. from the `docutils`
+document heuristics are applied to transform the document language to
+python or yml files.
+
 
 
 ## developing

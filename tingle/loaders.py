@@ -1,7 +1,9 @@
+"""a collection of context managers that modify file discovery on importings"""
+
 import importnb
 import tingle
 
-__all__ = "Markdown", "RST", "YAML"
+__all__ = "Markdown", "RST", "YAML", "YML"
 
 
 class LiterateMixin(importnb.Notebook):
