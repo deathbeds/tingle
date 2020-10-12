@@ -54,8 +54,6 @@ class XO(LiterateMixin):
         return tingle.util.ipy_transform(tingle.python.md2py(str))
 
     def parse(self, input):
-        execer = self.execer
-        execer.filename = self.path
         ctx = {}  # dummy for modules
         return self.execer.parse(input, ctx, mode='exec',
                                  filename=self.path, transform=True)

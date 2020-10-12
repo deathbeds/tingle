@@ -84,8 +84,6 @@ class Parameterized:
                 loader = type('tmploader', (loader,), {})
                 loader.visit = cls.visit
                 loader = loader(str(filename), str(filename), **kwargs)
-                spec = importlib.util.spec_from_loader(
-                    str(filename), loader)
                 module = cls.create_module(loader)
 
                 def main(**kwargs):
