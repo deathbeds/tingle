@@ -1,8 +1,10 @@
+"""permit emojis as validate python names."""
+
+
 def demojize(lines, delimiters=('_', '_')):
     str = ''.join(lines or [])
     import tokenize
     import emoji
-    import stringcase
     tokens = []
     try:
         for token in list(tokenize.tokenize(
