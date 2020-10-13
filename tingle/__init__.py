@@ -1,21 +1,20 @@
 """Tangling operations for different literate files."""
 __version__ = "0.1.0"
 
-from . import md, rst, python, loaders, util
+from . import md, rst, python, loaders, util, weave
+from .loaders import *
+from . import parameterize
 from .loaders import *
 
 with Markdown(lazy=True):
-    from . import yml, weave, parameterize
-    from . import weave
+    from . import yml
 
 
 def load_ipython_extension(shell):
-    with Markdown():
-        from . import extension
+    from . import extension
     extension.load_ipython_extension(shell)
 
 
 def unload_ipython_extension(shell):
-    with Markdown():
-        from . import extension
+    from . import extension
     extension.unload_ipython_extension(shell)

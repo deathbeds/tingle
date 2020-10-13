@@ -1,16 +1,12 @@
 # `tingle` tangle
 
-`tingle` is a library to _tangle_ modern markup and data languages
-into python programs. _tangle_ is a concept from literate programming
-that describes converting document into compiled program languages.
+`tingle` is a library to __import__ modern markup and data languages
+into python programs. it provides machinery to _tangle_ code; a concept from literate programming that describes converting document into compiled program languages.
 
-`tingle` allows folks to think different about their literature that
-can serve alternative roles as programs and data.
+`tingle` allows folks to think about literature that can serve as programs and data.
 
-`tingle` uses `docutils` and `myst_parser` to parse RST and Markdown to 
-intermediate representations as `docutils` documents. from the `docutils`
-document heuristics are applied to transform the document language to
-python or yml files.
+`tingle` brings the ability to __import__ and test markdown, yaml, json, images, xonsh, and lisp literate programs as python modules.
+
 
 `tingle` is a `pytest` extension that can test literate programs written
 in markdown or rst formats.
@@ -20,6 +16,30 @@ in markdown or rst formats.
         import tingle
         with tingle.loaders.Markdown():
             ...
+
+## the `tingle` extension
+
+```ipython
+%load_ext tingle
+```
+
+`tingle` is an `IPython` extension that makes small modifications to the interactive computing experience.
+
+1. allows markdown input in cells, there is no weaving step, see `nowidget` for more on weaving.
+2. top level returns
+3. emojis
+
+see the [`"extension.md"`](tingle/extension.md)
+
+## what does it do?
+
+the import discovery hooks are implemented in the `importnb` package. `tingle` is specifically concerned with the need to __tangle__ input to source code.
+
+it uses `docutils` and `myst_parser` to parse RST and Markdown to 
+intermediate representations as `docutils` documents. from the `docutils`
+document heuristics are applied to transform the document language to
+python or yml files.
+
 
 
 ## developing
@@ -38,28 +58,6 @@ Build the docs using jupyter book.
 
         def task_test():
 
-Test the `tingle` package using `pytest`.
+test the `tingle` package using `pytest`. extra pytest arguments are included in `"pyproject.toml"` meaning we can use the top-level `pytest` execution.
 
-            return dict(actions=["pytest -pno:pytest-pidgy"])
-
-
-        def task_sphinx_config():
-            """translate jupyter book configuration to an extended sphinx configuration.
-
-
-        extensions += 'autoapi.extension'.split()
-        autoapi_type = 'python'
-        autoapi_dirs = ['tingle']
-        jupyter_execute_notebooks = "off"
-        """
-            def append():
-                with open("conf.py", "a") as f:
-                    list(map(f.write, task_sphinx_config.__doc__.splitlines(True)[1:]))
-
-            return dict(actions=[
-                "jb config sphinx . > conf.py", 
-                append,
-                "pandoc -f markdown -t rst readme.md > readme.rst"], targets=["conf.py", "readme.rst"], file_dep=["readme.md"]) 
-
-        def task_sphinx():
-            return dict(actions=["sphinx-build . docs/_build"], file_dep=["conf.py"], targets=["docs/_build"])
+            return dict(actions=["pytest"])

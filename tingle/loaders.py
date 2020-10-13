@@ -1,7 +1,9 @@
+"""a collection of context managers that modify file discovery on importings"""
+
 import importnb
 import tingle
 
-__all__ = "Markdown", "RST", "YAML"
+__all__ = "Markdown", "RST", "YAML", "YML"
 
 
 class LiterateMixin(importnb.Notebook):
@@ -52,8 +54,6 @@ class XO(LiterateMixin):
         return tingle.util.ipy_transform(tingle.python.md2py(str))
 
     def parse(self, input):
-        execer = self.execer
-        execer.filename = self.path
         ctx = {}  # dummy for modules
         return self.execer.parse(input, ctx, mode='exec',
                                  filename=self.path, transform=True)
