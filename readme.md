@@ -55,8 +55,12 @@ Build the docs using jupyter book.
             ], file_dep=['docs/_toc.yml', 'docs/_config.yml'], targets=['_build/html'])
 
         def task_pdf():
+
+configure a pdf to build from the book task.
+
             object = task_book()
             object['actions'][0] += F"  --builder pdfhtml" 
+            object['targets'][0] = object['targets'][0].replace('html', 'pdf')
             return object
 
         def task_test():
