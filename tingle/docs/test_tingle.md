@@ -8,23 +8,23 @@ tests for the `tingle` package.
 test the abilities to import different data and files.
 
         with __import__("tingle").Markdown(lazy=True):
-            import tingle.tests.testmd
-        assert tingle.tests.testmd.__file__.endswith(".md")
+            import tingle.docs.testmd
+        assert tingle.docs.testmd.__file__.endswith(".md")
 
     def test_yml_import():
 test the abilities to import different data and files.
 
         with __import__("tingle").YAML(lazy=True):
-            import tingle.tests.testyml
-        assert tingle.tests.testyml.__file__.endswith(".md")
+            import tingle.docs.testyml
+        assert tingle.docs.testyml.__file__.endswith(".md")
         
     def test_xsh_import():
         with __import__("tingle").loaders.XO(lazy=True):
-            import tingle.tests.testxo
+            import tingle.docs.testxo
 
     def test_schema():
         with tingle.YAML(lazy=True):
-            import tingle.tests.testschema as module
+            import tingle.docs.testschema as module
         import jsonschema
         jsonschema.validate(dict(foo="xxx"), module.data)
         with pytest.raises(BaseException):
