@@ -23,4 +23,13 @@ pytest-tingle = "tingle.pytest_"
 tingle = "tingle.main:main"
 
 [tool.pytest.ini_options]
-addopts = "--nbval tingle --sanitize-with sanitize.cfg -p no:warnings -p no:importnb -pno:pidgy"
+addopts = """\
+--nbval docs tingle/docs \
+--sanitize-with sanitize.cfg \
+-p no:warnings -p no:importnb -pno:pidgy\
+--doctest-glob="*.md" \
+--doctest-glob="*.ipynb" \
+-v\
+"""
+python_files = "*.py"
+norecursedirs="sample .ipynb_checkpoints"
