@@ -50,7 +50,7 @@ the tasks below require `doit`, `#pip install doit`.
 
 Build the docs using jupyter book.
 
-            return dict(actions=["jb build ."], file_dep=['_toc.yml'], targets=['_build/html'])
+            return dict(actions=["jb build . --toc docs/_toc.yml --config docs/_config.yml"], file_dep=['docs/_toc.yml', 'docs/_config.yml'], targets=['_build/html'])
 
         def task_pdf():
             return dict(actions=["jb build . --builder pdfhtml"], file_dep=['_toc.yml'], targets=['_build/pdf/book.pdf'])
