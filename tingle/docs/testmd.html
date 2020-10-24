@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>test literate python and markdown &#8212; tingle tangle</title>
+    <title>sample document of tingle syntaxes. &#8212; tingle tangle</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,8 +55,6 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="literate data files" href="../yml.html" />
-    <link rel="prev" title="tingle command line interface" href="../readme.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -99,7 +97,7 @@
   running literate programs
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../readme.html">
    <code class="docutils literal notranslate">
@@ -108,11 +106,6 @@
     </span>
    </code>
    command line interface
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   test literate python and markdown
   </a>
  </li>
 </ul>
@@ -125,21 +118,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../yml.html">
    literate data files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="testyml.yml.html">
-   a literate yaml file
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="testschema.yml.html">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     tingle
-    </span>
-   </code>
-   documents schema specifications
   </a>
  </li>
 </ul>
@@ -201,7 +179,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/tingle/tests/test_tingle.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/tingle/docs/testmd.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -226,6 +204,25 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
+        <div class="tocsection onthispage pt-5 pb-3">
+            <i class="fas fa-list"></i> Contents
+        </div>
+        <nav id="bd-toc-nav">
+            <ul class="nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-markdown-as-strings">
+   using markdown as strings
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#block-statements">
+   block statements
+  </a>
+ </li>
+</ul>
+
+        </nav>
+        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -233,40 +230,82 @@
         
               <div>
                 
-  <div class="section" id="test-literate-python-and-markdown">
-<h1>test literate python and markdown<a class="headerlink" href="#test-literate-python-and-markdown" title="Permalink to this headline">¶</a></h1>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import pytest, tingle
+  <div class="section" id="sample-document-of-tingle-syntaxes">
+<h1>sample document of <code class="docutils literal notranslate"><span class="pre">tingle</span></code> syntaxes.<a class="headerlink" href="#sample-document-of-tingle-syntaxes" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> transforms markdown to python according to the relative position of the code blocks. this document describes the formations between code and _non_code blocks.</p>
+<p>the most basic conformation are complete python statements and expressions with markdown narrative woven in between. under these conditions the code and _non_code do not interact.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    # state writing the program here
+    import tingle
+    [&quot;xo&quot;[i%2] for i in range(10)]
 </pre></div>
 </div>
-<p>tests for the <code class="docutils literal notranslate"><span class="pre">tingle</span></code> package.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def test_md_import():
+<p>this is a basic case that happes commonly when describing scripts. <code class="docutils literal notranslate"><span class="pre">tingle</span></code> affords abilities where code and _non_code can interact.</p>
+<div class="section" id="using-markdown-as-strings">
+<h2>using markdown as strings<a class="headerlink" href="#using-markdown-as-strings" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    blocks_of_narrative =\
 </pre></div>
 </div>
-<p>test the abilities to import different data and files.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    with __import__(&quot;tingle&quot;).Markdown(lazy=True):
-        import tingle.tests.testmd
-    assert tingle.tests.testmd.__file__.endswith(&quot;.md&quot;)
+<p>are defined as variables using lines continuations.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ...
+    &gt;&gt;&gt; blocks_of_narrative
+    &quot;are defined as variables using lines continuations.&quot;
+</pre></div>
+</div>
+<p>blocks string can be defined explicitly.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    explicit_block = &quot;&quot;&quot;
+</pre></div>
+</div>
+<p>the body of markdown is wrapped in a block string that can be operated on.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    &quot;&quot;&quot;.upper()
 
-def test_yml_import():
+    tight_explicit_block = &quot;&quot;&quot;\
 </pre></div>
 </div>
-<p>test the abilities to import different data and files.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    with __import__(&quot;tingle&quot;).YAML(lazy=True):
-        import tingle.tests.testyml
-    assert tingle.tests.testyml.__file__.endswith(&quot;.md&quot;)
-    
-def test_xsh_import():
-    with __import__(&quot;tingle&quot;).loaders.XO(lazy=True):
-        import tingle.tests.testxo
+<p>the body of markdown is wrapped in a block string that can be operated on.\</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    &quot;&quot;&quot;.upper()
 
-def test_schema():
-    with tingle.YAML(lazy=True):
-        import tingle.tests.testschema as module
-    import jsonschema
-    jsonschema.validate(dict(foo=&quot;xxx&quot;), module.data)
-    with pytest.raises(BaseException):
-        jsonschema.validate(dict(), module.data)
+    tight_paren_block = (
 </pre></div>
+</div>
+<p>the body of markdown is wrapped in a block string that can be operated on.\</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    )  
+</pre></div>
+</div>
+</div>
+<div class="section" id="block-statements">
+<h2>block statements<a class="headerlink" href="#block-statements" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> handles indentations for python code relative block statements and expressions.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    def a_noop_function():
+</pre></div>
+</div>
+<p>retains the following markdown and doctests as the docstring for the preceeding function defintion.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    def a_useful_function():
+</pre></div>
+</div>
+<p>retains the following markdown and doctests as the docstring for the preceeding function defintion. the identation can be guided by the body of the function.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                &quot;this is a big indent&quot;
+</pre></div>
+</div>
+<p>but the interleaved strings are indented according to the <code class="docutils literal notranslate"><span class="pre">tingle</span></code> heuristics.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    class AClass:
+</pre></div>
+</div>
+<p>definition also retains following narrative as the docstring.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>            def for_nested_methods(self):
+</pre></div>
+</div>
+<p>the narrative is indented and represents a more complicated <code class="docutils literal notranslate"><span class="pre">tingle</span></code> syntax that returns the formatted body of the narrative</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                    return 
+
+
+    if __name__ == &#39;__main__&#39;:
+</pre></div>
+</div>
+<p>test the defined docstrings.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>            import doctest
+            print(doctest.testmod())
+</pre></div>
+</div>
 </div>
 </div>
 
@@ -283,7 +322,7 @@ def test_schema():
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./tingle/tests"
+            path: "./tingle/docs"
         },
         predefinedOutput: true
     }
@@ -298,8 +337,6 @@ def test_schema():
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../readme.html" title="previous page"><code class="docutils literal notranslate"><span class="pre">tingle</span></code> command line interface</a>
-    <a class='right-next' id="next-link" href="../yml.html" title="next page">literate data files</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

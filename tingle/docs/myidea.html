@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>shebang headers in literate programs. &#8212; tingle tangle</title>
+    <title>my idea &#8212; tingle tangle</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -108,11 +108,6 @@
    command line interface
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="test_tingle.html">
-   test literate python and markdown
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -123,21 +118,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../yml.html">
    literate data files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="testyml.yml.html">
-   a literate yaml file
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="testschema.yml.html">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     tingle
-    </span>
-   </code>
-   documents schema specifications
   </a>
  </li>
 </ul>
@@ -199,9 +179,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/tingle/tests/test_cli.md.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/tingle/docs/myidea.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.ipynb</button></a>
+                data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -219,23 +199,6 @@
 
         <!-- Launch buttons -->
 
-<div class="dropdown-buttons-trigger">
-    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
-        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
-    <div class="dropdown-buttons">
-        
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/tingle/tests/test_cli.md.ipynb"><button type="button"
-                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
-                data-placement="left"><img class="binder-button-logo"
-                    src="../../_static/images/logo_binder.svg"
-                    alt="Interact on binder">Binder</button></a>
-        
-        
-        
-        
-    </div>
-</div>
-
     </div>
 
     <!-- Table of contents -->
@@ -248,104 +211,12 @@
         
               <div>
                 
-  <div class="section" id="shebang-headers-in-literate-programs">
-<h1>shebang headers in literate programs.<a class="headerlink" href="#shebang-headers-in-literate-programs" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> documents can begin with a shebang that provide instructions
-on how to run a document as a program. <code class="docutils literal notranslate"><span class="pre">tingle</span></code> shebangs may look like</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/env tingle
-#!/usr/bin/env -S tingle
-#!/usr/bin/env -S tingle --weave
-#!/usr/bin/env -S tingle --no-main
+  <p>#!/usr/bin/env -S tingle –weave</p>
+<div class="section" id="my-idea">
+<h1>my idea<a class="headerlink" href="#my-idea" title="Permalink to this headline">¶</a></h1>
+<p>my idea has a variable call foo, it has the value {{foo}}.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>foo = 42
 </pre></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">IPython</span><span class="o">,</span> <span class="nn">tingle</span><span class="o">,</span> <span class="nn">pathlib</span>
-    <span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">get_ipython</span>
-    <span class="n">ip</span> <span class="o">=</span> <span class="n">get_ipython</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">ip</span><span class="p">:</span>
-        <span class="o">%</span><span class="k">load_ext</span> tingle    
-</pre></div>
-</div>
-</div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">&quot;testtemplate.md&quot;</span></code> begins with a shebang that includes in the <code class="docutils literal notranslate"><span class="pre">&quot;--weave&quot;</span></code> which applies transclusion before showing the rendered output.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>        <span class="p">(</span>
-            <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">tingle</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span>
-            <span class="o">/</span> <span class="s2">&quot;tests&quot;</span> <span class="o">/</span> <span class="s2">&quot;testtemplate.md&quot;</span>
-        <span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;#!/usr/bin/env -S tingle --weave&#39;
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="k">if</span> <span class="n">ip</span><span class="p">:</span>
-        <span class="o">!</span>python -m tingle testtemplate.md --help
-        <span class="o">!</span>python -m tingle testtemplate.md -h
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Usage: __main__.py [OPTIONS] FILE
-
-  The command line interface for running documents as code. Documents are
-  parameterized by their literal expressions.
-
-Arguments:
-  FILE  [required]
-
-Options:
-  --main / --no-main    [default: True]
-  --weave / --no-weave  [default: False]
-  --help                Show this message and exit.
-Usage: testtemplate.md [OPTIONS]
-
-Options:
-  --foo INTEGER  [default: 42]
-  -h, --help     Show this message and exit.
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## templated couments</span>
-    
-    <span class="k">if</span> <span class="n">ip</span><span class="p">:</span>
-        <span class="o">!</span>tingle testtemplate.md --weave
-        <span class="o">!</span>tingle testtemplate.md --weave --foo <span class="m">8</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This program, named <span class=" -Color -Color-Yellow">`#__main__`</span> has the value _42_ for foo.
-
-This program, named <span class=" -Color -Color-Yellow">`#__main__`</span> has the value _8_ for foo.
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="c1">#NBVAL_SKIP</span>
-    <span class="k">if</span> <span class="n">ip</span><span class="p">:</span>
-        <span class="o">!</span>./testtemplate.md --no-main
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This program, named <span class=" -Color -Color-Yellow">`#__main__`</span> has the value _42_ for foo.
-</pre></div>
-</div>
-</div>
 </div>
 </div>
 
@@ -362,7 +233,7 @@ This program, named <span class=" -Color -Color-Yellow">`#__main__`</span> has t
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./tingle/tests"
+            path: "./tingle/docs"
         },
         predefinedOutput: true
     }

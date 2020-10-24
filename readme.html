@@ -109,11 +109,6 @@
    command line interface
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tingle/tests/test_tingle.html">
-   test literate python and markdown
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -124,21 +119,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="tingle/yml.html">
    literate data files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tingle/tests/testyml.yml.html">
-   a literate yaml file
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="tingle/tests/testschema.yml.html">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     tingle
-    </span>
-   </code>
-   documents schema specifications
   </a>
  </li>
 </ul>
@@ -313,11 +293,18 @@ python or yml files.</p>
 </pre></div>
 </div>
 <p>Build the docs using jupyter book.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        return dict(actions=[&quot;jb build .&quot;], file_dep=[&#39;_toc.yml&#39;], targets=[&#39;_build/html&#39;])
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        return dict(actions=[
+            &quot;jb build . --toc docs/_toc.yml --config docs/_config.yml&quot;
+        ], file_dep=[&#39;docs/_toc.yml&#39;, &#39;docs/_config.yml&#39;], targets=[&#39;_build/html&#39;])
 
     def task_pdf():
-        return dict(actions=[&quot;jb build . --builder pdfhtml&quot;], file_dep=[&#39;_toc.yml&#39;], targets=[&#39;_build/pdf/book.pdf&#39;])
-
+</pre></div>
+</div>
+<p>configure a pdf to build from the book task.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        object = task_book()
+        object[&#39;actions&#39;][0] += F&quot;  --builder pdfhtml&quot; 
+        object[&#39;targets&#39;][0] = object[&#39;targets&#39;][0].replace(&#39;html&#39;, &#39;pdf&#39;)
+        return object
 
     def task_test():
 </pre></div>

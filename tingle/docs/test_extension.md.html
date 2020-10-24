@@ -108,11 +108,6 @@
    command line interface
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="test_tingle.html">
-   test literate python and markdown
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -123,21 +118,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../yml.html">
    literate data files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="testyml.yml.html">
-   a literate yaml file
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="testschema.yml.html">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     tingle
-    </span>
-   </code>
-   documents schema specifications
   </a>
  </li>
 </ul>
@@ -199,7 +179,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/tingle/tests/test_extension.md.ipynb"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/tingle/docs/test_extension.md.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
@@ -224,7 +204,7 @@
         aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
     <div class="dropdown-buttons">
         
-        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/tingle/tests/test_extension.md.ipynb"><button type="button"
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/tingle/docs/test_extension.md.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
                 data-placement="left"><img class="binder-button-logo"
                     src="../../_static/images/logo_binder.svg"
@@ -316,37 +296,6 @@ to convert the document language into compiled python.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>`tingle` provides a minimal opinion for weaving cell outputs into formatted Markdown output.
-
-    if shell:
-        %load_ext tingle.weave
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> provides a minimal opinion for weaving cell outputs into formatted Markdown output.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if shell:
-    %load_ext tingle.weave
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="n">leading</span> <span class="n">blank</span> <span class="n">line</span> <span class="k">with</span> <span class="n">omit</span> <span class="n">the</span> <span class="n">weaving</span> <span class="n">event</span> <span class="kn">from</span> <span class="nn">the</span> <span class="n">step</span><span class="o">.</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="k">if</span> <span class="n">shell</span><span class="p">:</span>
-        <span class="o">%</span><span class="k">unload_ext</span> tingle
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if shell:
-    %unload_ext tingle
 </pre></div>
 </div>
 </div>
@@ -361,20 +310,11 @@ to convert the document language into compiled python.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span># cells are back to python first
-</pre></div>
-</div>
-<div class="system-message">
-<p class="system-message-title">System Message: WARNING/2 (<span class="docutils literal">/home/runner/work/tingle/tingle/tingle/tests/test_extension.md.ipynb</span>, line 1)</p>
-<p>Non-consecutive header level increase; 0 to 5</p>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="k">if</span> <span class="n">shell</span><span class="p">:</span>
-        <span class="o">%</span><span class="k">unload_ext</span> tingle.weave
+        <span class="o">%</span><span class="k">unload_ext</span> tingle
 </pre></div>
 </div>
 </div>
@@ -396,17 +336,7 @@ to convert the document language into compiled python.
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="k">if</span> <span class="n">shell</span><span class="p">:</span>
         <span class="c1"># enter back into the extensions</span>
         <span class="o">%</span><span class="k">load_ext</span> tingle
-        <span class="o">%</span><span class="k">load_ext</span> tingle.weave
         <span class="c1"># the shows in the output as code because the registered post_run_cell is invoked.</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>if shell:
-    # enter back into the extensions
-    %load_ext tingle
-    %load_ext tingle.weave
-    # the shows in the output as code because the registered post_run_cell is invoked.
 </pre></div>
 </div>
 </div>
@@ -420,10 +350,6 @@ to convert the document language into compiled python.
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<p>in <code class="docutils literal notranslate"><span class="pre">tingle</span></code>'s minimal weaving process it does provide templating capabilities. provided by either
-<code class="docutils literal notranslate"><span class="pre">nbconvert</span></code> or <code class="docutils literal notranslate"><span class="pre">jinja2</span></code>.</p>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -434,14 +360,6 @@ transclude data from the user namespace into the output of the markdown cells
 the following markdown.
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<p>the value of <code class="docutils literal notranslate"><span class="pre">a_variable</span></code> is <em>the following markdown.</em>. we are able to
-transclude data from the user namespace into the output of the markdown cells</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>a_variable=\
-</pre></div>
-</div>
-<p>the following markdown.</p>
 </div>
 </div>
 </div>
@@ -473,7 +391,7 @@ the document language and narrative are paramount. as a result, markdown cells r
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./tingle/tests"
+            path: "./tingle/docs"
         },
         predefinedOutput: true
     }

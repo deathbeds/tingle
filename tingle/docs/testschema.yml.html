@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>sample document of tingle syntaxes. &#8212; tingle tangle</title>
+    <title>tingle documents schema specifications &#8212; tingle tangle</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -108,11 +108,6 @@
    command line interface
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="test_tingle.html">
-   test literate python and markdown
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -123,21 +118,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../yml.html">
    literate data files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="testyml.yml.html">
-   a literate yaml file
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="testschema.yml.html">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     tingle
-    </span>
-   </code>
-   documents schema specifications
   </a>
  </li>
 </ul>
@@ -199,7 +179,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/tingle/tests/testmd.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/tingle/docs/testschema.yml.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -230,13 +210,25 @@
         <nav id="bd-toc-nav">
             <ul class="nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-markdown-as-strings">
-   using markdown as strings
+  <a class="reference internal nav-link" href="#top-level-information">
+   Top level information
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#block-statements">
-   block statements
+  <a class="reference internal nav-link" href="#properties">
+   Properties
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#a-note">
+     a note
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#definitions">
+   definitions
   </a>
  </li>
 </ul>
@@ -250,80 +242,50 @@
         
               <div>
                 
-  <div class="section" id="sample-document-of-tingle-syntaxes">
-<h1>sample document of <code class="docutils literal notranslate"><span class="pre">tingle</span></code> syntaxes.<a class="headerlink" href="#sample-document-of-tingle-syntaxes" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> transforms markdown to python according to the relative position of the code blocks. this document describes the formations between code and _non_code blocks.</p>
-<p>the most basic conformation are complete python statements and expressions with markdown narrative woven in between. under these conditions the code and _non_code do not interact.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    # state writing the program here
-    import tingle
-    [&quot;xo&quot;[i%2] for i in range(10)]
+  <div class="section" id="tingle-documents-schema-specifications">
+<h1><code class="docutils literal notranslate"><span class="pre">tingle</span></code> documents schema specifications<a class="headerlink" href="#tingle-documents-schema-specifications" title="Permalink to this headline">¶</a></h1>
+<p>it turns out that the literate yaml format provides a keen interface for
+building documents and specifying schema. this demonstrates a sample.</p>
+<div class="section" id="top-level-information">
+<h2>Top level information<a class="headerlink" href="#top-level-information" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    title:
 </pre></div>
 </div>
-<p>this is a basic case that happes commonly when describing scripts. <code class="docutils literal notranslate"><span class="pre">tingle</span></code> affords abilities where code and _non_code can interact.</p>
-<div class="section" id="using-markdown-as-strings">
-<h2>using markdown as strings<a class="headerlink" href="#using-markdown-as-strings" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    blocks_of_narrative =\
-</pre></div>
-</div>
-<p>are defined as variables using lines continuations.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    ...
-    &gt;&gt;&gt; blocks_of_narrative
-    &quot;are defined as variables using lines continuations.&quot;
-</pre></div>
-</div>
-<p>blocks string can be defined explicitly.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    explicit_block = &quot;&quot;&quot;
-</pre></div>
-</div>
-<p>the body of markdown is wrapped in a block string that can be operated on.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    &quot;&quot;&quot;.upper()
-
-    tight_explicit_block = &quot;&quot;&quot;\
-</pre></div>
-</div>
-<p>the body of markdown is wrapped in a block string that can be operated on.\</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    &quot;&quot;&quot;.upper()
-
-    tight_paren_block = (
-</pre></div>
-</div>
-<p>the body of markdown is wrapped in a block string that can be operated on.\</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    )  
+<p>a schema written in a literate format.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    required: [foo]
 </pre></div>
 </div>
 </div>
-<div class="section" id="block-statements">
-<h2>block statements<a class="headerlink" href="#block-statements" title="Permalink to this headline">¶</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> handles indentations for python code relative block statements and expressions.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    def a_noop_function():
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    properties:
+            foo:
+                    type: string
+                    title: Foo
+                    description:
 </pre></div>
 </div>
-<p>retains the following markdown and doctests as the docstring for the preceeding function defintion.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    def a_useful_function():
+<p>an example of a dictionary that has a string property <code class="docutils literal notranslate"><span class="pre">foo</span></code>.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>            bar:
+                    type: number
+                    title: Bar
+                    description: &gt;
 </pre></div>
 </div>
-<p>retains the following markdown and doctests as the docstring for the preceeding function defintion. the identation can be guided by the body of the function.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                &quot;this is a big indent&quot;
+<p><code class="docutils literal notranslate"><span class="pre">bar</span></code> is another, but it is not required.</p>
+<div class="section" id="a-note">
+<h3>a note<a class="headerlink" href="#a-note" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    # everything after this point is a comment until more code is found.
 </pre></div>
 </div>
-<p>but the interleaved strings are indented according to the <code class="docutils literal notranslate"><span class="pre">tingle</span></code> heuristics.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    class AClass:
-</pre></div>
+<p>it is necessary to use &gt; or | markup for the previous description because of the
+leading tick that breaks the yaml parsers.</p>
+<p>todo: it is possible use yaml features like anchors and aliases to build rich schema.</p>
 </div>
-<p>definition also retains following narrative as the docstring.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>            def for_nested_methods(self):
-</pre></div>
 </div>
-<p>the narrative is indented and represents a more complicated <code class="docutils literal notranslate"><span class="pre">tingle</span></code> syntax that returns the formatted body of the narrative</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>                    return 
-
-
-    if __name__ == &#39;__main__&#39;:
-</pre></div>
-</div>
-<p>test the defined docstrings.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>            import doctest
-            print(doctest.testmod())
+<div class="section" id="definitions">
+<h2>definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    defs: {}
 </pre></div>
 </div>
 </div>
@@ -342,7 +304,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./tingle/tests"
+            path: "./tingle/docs"
         },
         predefinedOutput: true
     }

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>fizzbuzz literate program &#8212; tingle tangle</title>
+    <title>shebang headers in literate programs. &#8212; tingle tangle</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,8 +55,6 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="fizz buzz program" href="lit_fizz/readme.html" />
-    <link rel="prev" title="literate data files" href="../../tingle/yml.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -101,7 +99,7 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../tingle/readme.html">
+  <a class="reference internal" href="../readme.html">
    <code class="docutils literal notranslate">
     <span class="pre">
      tingle
@@ -118,7 +116,7 @@
 </p>
 <ul class="nav sidenav_l1">
  <li class="toctree-l1">
-  <a class="reference internal" href="../../tingle/yml.html">
+  <a class="reference internal" href="../yml.html">
    literate data files
   </a>
  </li>
@@ -128,14 +126,14 @@
   sample project
  </span>
 </p>
-<ul class="current nav sidenav_l1">
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+<ul class="nav sidenav_l1">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../../docs/sample/readme.html">
    fizzbuzz literate program
   </a>
  </li>
  <li class="toctree-l1">
-  <a class="reference internal" href="lit_fizz/readme.html">
+  <a class="reference internal" href="../../docs/sample/lit_fizz/readme.html">
    fizz buzz program
   </a>
  </li>
@@ -181,9 +179,9 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/docs/sample/readme.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/tingle/docs/test_cli.md.ipynb"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
-                data-placement="left">.md</button></a>
+                data-placement="left">.ipynb</button></a>
         <!-- Download PDF via print -->
         <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
             onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
@@ -201,46 +199,27 @@
 
         <!-- Launch buttons -->
 
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/executablebooks/jupyter-book/master?urlpath=tree/tingle/docs/test_cli.md.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        
+    </div>
+</div>
+
     </div>
 
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
-        
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#continuous-integration">
-   continuous integration
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#developer">
-   developer
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#building-the-documentation">
-     building the documentation.
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#development-mode">
-     development mode
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#testing-mode">
-     testing mode.
-    </a>
-   </li>
-  </ul>
- </li>
-</ul>
-
-        </nav>
         
     </div>
 </div>
@@ -249,57 +228,101 @@
         
               <div>
                 
-  <div class="section" id="fizzbuzz-literate-program">
-<h1>fizzbuzz literate program<a class="headerlink" href="#fizzbuzz-literate-program" title="Permalink to this headline">¶</a></h1>
-<p>a fizzbuzz program written as a literate program.</p>
-<div class="section" id="continuous-integration">
-<h2>continuous integration<a class="headerlink" href="#continuous-integration" title="Permalink to this headline">¶</a></h2>
-<p>tests and builds documentation using the same content. usually documentation, tests, and code are separated which is useful for mature ideas. meanwhile, literate programs are more flex in more ambiguous problems.</p>
-<ul class="simple">
-<li><p>tests the module with <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">pytest</span></code></span></p></li>
-<li><p>produces documentation on <span class="xref myst">github pages</span>.</p></li>
-<li><p>this repository produces a pdf artifact.</p></li>
-</ul>
-</div>
-<div class="section" id="developer">
-<h2>developer<a class="headerlink" href="#developer" title="Permalink to this headline">¶</a></h2>
-<p>the <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">doit</span></code></span> tasks are used by github actions to test and build docs. the <code class="docutils literal notranslate"><span class="pre">&quot;readme.md&quot;</span></code> document
-is imported in the <code class="docutils literal notranslate"><span class="pre">&quot;dodo.py&quot;</span></code> configuration file, and any function beginning with <code class="docutils literal notranslate"><span class="pre">&quot;task_&quot;</span></code> is
-recognized by <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">doit</span></code></span>.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    #pip install doit 
+  <div class="section" id="shebang-headers-in-literate-programs">
+<h1>shebang headers in literate programs.<a class="headerlink" href="#shebang-headers-in-literate-programs" title="Permalink to this headline">¶</a></h1>
+<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> documents can begin with a shebang that provide instructions
+on how to run a document as a program. <code class="docutils literal notranslate"><span class="pre">tingle</span></code> shebangs may look like</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/env tingle
+#!/usr/bin/env -S tingle
+#!/usr/bin/env -S tingle --weave
+#!/usr/bin/env -S tingle --no-main
 </pre></div>
 </div>
-<div class="section" id="building-the-documentation">
-<h3>building the documentation.<a class="headerlink" href="#building-the-documentation" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    # pip install .[doc] # requires the module tests dependencies.
-    def task_book():
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="kn">import</span> <span class="nn">IPython</span><span class="o">,</span> <span class="nn">tingle</span><span class="o">,</span> <span class="nn">pathlib</span>
+    <span class="kn">from</span> <span class="nn">IPython</span> <span class="kn">import</span> <span class="n">get_ipython</span>
+    <span class="n">ip</span> <span class="o">=</span> <span class="n">get_ipython</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">ip</span><span class="p">:</span>
+        <span class="o">%</span><span class="k">load_ext</span> tingle    
 </pre></div>
 </div>
-<p>build a html book with <span class="xref myst">jupyter book</span> based on the <code class="docutils literal notranslate"><span class="pre">&quot;_toc.yml&quot;</span> <span class="pre">and</span> <span class="pre">&quot;_config.yml&quot;</span></code> configuration files.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        return dict(actions=[&quot;jb build .&quot;], file_dep=[&quot;_toc.yml&quot;], targets=[&quot;_build/html&quot;])
+</div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">&quot;testtemplate.md&quot;</span></code> begins with a shebang that includes in the <code class="docutils literal notranslate"><span class="pre">&quot;--weave&quot;</span></code> which applies transclusion before showing the rendered output.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>        <span class="p">(</span>
+            <span class="n">pathlib</span><span class="o">.</span><span class="n">Path</span><span class="p">(</span><span class="n">tingle</span><span class="o">.</span><span class="vm">__file__</span><span class="p">)</span><span class="o">.</span><span class="n">parent</span>
+            <span class="o">/</span> <span class="s2">&quot;docs&quot;</span> <span class="o">/</span> <span class="s2">&quot;testtemplate.md&quot;</span>
+        <span class="p">)</span><span class="o">.</span><span class="n">read_text</span><span class="p">()</span><span class="o">.</span><span class="n">splitlines</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;#!/usr/bin/env -S tingle --weave&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="k">if</span> <span class="n">ip</span><span class="p">:</span>
+        <span class="o">!</span>python -m tingle testtemplate.md --help
+        <span class="o">!</span>python -m tingle testtemplate.md -h
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Usage: __main__.py [OPTIONS] FILE
 
-    def task_pdf():
+  The command line interface for running documents as code. Documents are
+  parameterized by their literal expressions.
+
+Arguments:
+  FILE  [required]
+
+Options:
+  --main / --no-main    [default: True]
+  --weave / --no-weave  [default: False]
+  --help                Show this message and exit.
+Usage: testtemplate.md [OPTIONS]
+
+Options:
+  --foo INTEGER  [default: 42]
+  -h, --help     Show this message and exit.
 </pre></div>
 </div>
-<p>build a pdf version of the html book.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        return dict(actions=[&quot;jb build . --builder pdfhtml&quot;], file_dep=[&#39;_toc.yml&#39;], targets=[&#39;_build/pdf/book.pdf&#39;])
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## templated couments</span>
+    
+    <span class="k">if</span> <span class="n">ip</span><span class="p">:</span>
+        <span class="o">!</span>tingle testtemplate.md --weave
+        <span class="o">!</span>tingle testtemplate.md --weave --foo <span class="m">8</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="development-mode">
-<h3>development mode<a class="headerlink" href="#development-mode" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    def task_develop():
-</pre></div>
-</div>
-<p>setup up develop mode using <span class="xref myst"><code class="docutils literal notranslate"><span class="pre">flit</span></code></span> with the configuration defined in <code class="docutils literal notranslate"><span class="pre">&quot;pyproject.yml&quot;</span></code>.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>        return dict(actions=[&quot;flit install -s&quot;], file_dep=[&#39;pyproject.yml&#39;])
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This program, named <span class=" -Color -Color-Yellow">`#__main__`</span> has the value _42_ for foo.
+
+This program, named <span class=" -Color -Color-Yellow">`#__main__`</span> has the value _8_ for foo.
 </pre></div>
 </div>
 </div>
-<div class="section" id="testing-mode">
-<h3>testing mode.<a class="headerlink" href="#testing-mode" title="Permalink to this headline">¶</a></h3>
-<p>run <code class="docutils literal notranslate"><span class="pre">pytest</span></code> in the root directory to test this module, extended settings are set in <code class="docutils literal notranslate"><span class="pre">&quot;pyproject.yml&quot;</span></code>.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    #!pytest
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>    <span class="c1">#NBVAL_SKIP</span>
+    <span class="k">if</span> <span class="n">ip</span><span class="p">:</span>
+        <span class="o">!</span>./testtemplate.md --no-main
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This program, named <span class=" -Color -Color-Yellow">`#__main__`</span> has the value _42_ for foo.
 </pre></div>
 </div>
 </div>
@@ -319,7 +342,7 @@ recognized by <span class="xref myst"><code class="docutils literal notranslate"
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./docs/sample"
+            path: "./tingle/docs"
         },
         predefinedOutput: true
     }
@@ -334,8 +357,6 @@ recognized by <span class="xref myst"><code class="docutils literal notranslate"
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="../../tingle/yml.html" title="previous page">literate data files</a>
-    <a class='right-next' id="next-link" href="lit_fizz/readme.html" title="next page">fizz buzz program</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

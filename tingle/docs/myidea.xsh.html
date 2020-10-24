@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>tingle documents schema specifications &#8212; tingle tangle</title>
+    <title>my idea &#8212; tingle tangle</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -55,8 +55,6 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="fizzbuzz literate program" href="../../docs/sample/readme.html" />
-    <link rel="prev" title="a literate yaml file" href="testyml.yml.html" />
 
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -110,36 +108,16 @@
    command line interface
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="test_tingle.html">
-   test literate python and markdown
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
   literate data files
  </span>
 </p>
-<ul class="current nav sidenav_l1">
+<ul class="nav sidenav_l1">
  <li class="toctree-l1">
   <a class="reference internal" href="../yml.html">
    literate data files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="testyml.yml.html">
-   a literate yaml file
-  </a>
- </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     tingle
-    </span>
-   </code>
-   documents schema specifications
   </a>
  </li>
 </ul>
@@ -201,7 +179,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/tingle/tests/testschema.yml.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/tingle/docs/myidea.xsh.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -226,37 +204,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="nav section-nav flex-column">
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#top-level-information">
-   Top level information
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#properties">
-   Properties
-  </a>
-  <ul class="nav section-nav flex-column">
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#a-note">
-     a note
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#definitions">
-   definitions
-  </a>
- </li>
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -264,52 +211,23 @@
         
               <div>
                 
-  <div class="section" id="tingle-documents-schema-specifications">
-<h1><code class="docutils literal notranslate"><span class="pre">tingle</span></code> documents schema specifications<a class="headerlink" href="#tingle-documents-schema-specifications" title="Permalink to this headline">¶</a></h1>
-<p>it turns out that the literate yaml format provides a keen interface for
-building documents and specifying schema. this demonstrates a sample.</p>
-<div class="section" id="top-level-information">
-<h2>Top level information<a class="headerlink" href="#top-level-information" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    title:
+  <p>#!/usr/bin/env -S tingle –weave</p>
+<div class="section" id="my-idea">
+<h1>my idea<a class="headerlink" href="#my-idea" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    foo = 32
 </pre></div>
 </div>
-<p>a schema written in a literate format.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    required: [foo]
+<p>my idea has a variable call foo, it has the value</p>
+<p>about tony</p>
+<p>{{tony.to_markdown()}}</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    tony = pandas.read_json(&quot;https://api.github.com/users/tonyfast&quot;, typ=pandas.Series).to_frame(&#39;tonyfast&#39;)
 </pre></div>
 </div>
-</div>
-<div class="section" id="properties">
-<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    properties:
-            foo:
-                    type: string
-                    title: Foo
-                    description:
+<p>{{
+pandas.util.testing.makeDataFrame().to_markdown()</p>
+<p>}}.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    import pandas
 </pre></div>
-</div>
-<p>an example of a dictionary that has a string property <code class="docutils literal notranslate"><span class="pre">foo</span></code>.</p>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>            bar:
-                    type: number
-                    title: Bar
-                    description: &gt;
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">bar</span></code> is another, but it is not required.</p>
-<div class="section" id="a-note">
-<h3>a note<a class="headerlink" href="#a-note" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    # everything after this point is a comment until more code is found.
-</pre></div>
-</div>
-<p>it is necessary to use &gt; or | markup for the previous description because of the
-leading tick that breaks the yaml parsers.</p>
-<p>todo: it is possible use yaml features like anchors and aliases to build rich schema.</p>
-</div>
-</div>
-<div class="section" id="definitions">
-<h2>definitions<a class="headerlink" href="#definitions" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    defs: {}
-</pre></div>
-</div>
 </div>
 </div>
 
@@ -326,7 +244,7 @@ leading tick that breaks the yaml parsers.</p>
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./tingle/tests"
+            path: "./tingle/docs"
         },
         predefinedOutput: true
     }
@@ -341,8 +259,6 @@ leading tick that breaks the yaml parsers.</p>
     
     <div class='prev-next-bottom'>
         
-    <a class='left-prev' id="prev-link" href="testyml.yml.html" title="previous page">a literate yaml file</a>
-    <a class='right-next' id="next-link" href="../../docs/sample/readme.html" title="next page">fizzbuzz literate program</a>
 
     </div>
     <footer class="footer mt-5 mt-md-0">

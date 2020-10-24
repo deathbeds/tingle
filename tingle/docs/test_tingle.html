@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>&lt;no title&gt; &#8212; tingle tangle</title>
+    <title>test literate python and markdown &#8212; tingle tangle</title>
     
   <link rel="stylesheet" href="../../_static/css/index.73d71520a4ca3b99cfee5594769eaaae.css">
 
@@ -108,11 +108,6 @@
    command line interface
   </a>
  </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="test_tingle.html">
-   test literate python and markdown
-  </a>
- </li>
 </ul>
 <p class="caption">
  <span class="caption-text">
@@ -123,21 +118,6 @@
  <li class="toctree-l1">
   <a class="reference internal" href="../yml.html">
    literate data files
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="testyml.yml.html">
-   a literate yaml file
-  </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="testschema.yml.html">
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     tingle
-    </span>
-   </code>
-   documents schema specifications
   </a>
  </li>
 </ul>
@@ -199,7 +179,7 @@
         <!-- ipynb file if we had a myst markdown file -->
         
         <!-- Download raw file -->
-        <a class="dropdown-buttons" href="../../_sources/tingle/tests/testtemplate.md"><button type="button"
+        <a class="dropdown-buttons" href="../../_sources/tingle/docs/test_tingle.md"><button type="button"
                 class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
                 data-placement="left">.md</button></a>
         <!-- Download PDF via print -->
@@ -224,15 +204,6 @@
     <!-- Table of contents -->
     <div class="d-none d-md-block col-md-2 bd-toc show">
         
-        <div class="tocsection onthispage pt-5 pb-3">
-            <i class="fas fa-list"></i> Contents
-        </div>
-        <nav id="bd-toc-nav">
-            <ul class="simple nav section-nav flex-column">
-</ul>
-
-        </nav>
-        
     </div>
 </div>
     <div id="main-content" class="row">
@@ -240,14 +211,43 @@
         
               <div>
                 
-  <p>#!/usr/bin/env -S tingle –weave</p>
-<p>This program, named <code class="docutils literal notranslate"><span class="pre">#{{__name__}}</span></code> has the value <em>{{foo}}</em> for foo.</p>
-<!--
+  <div class="section" id="test-literate-python-and-markdown">
+<h1>test literate python and markdown<a class="headerlink" href="#test-literate-python-and-markdown" title="Permalink to this headline">¶</a></h1>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>import pytest, tingle
+</pre></div>
+</div>
+<p>tests for the <code class="docutils literal notranslate"><span class="pre">tingle</span></code> package.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>def test_md_import():
+</pre></div>
+</div>
+<p>test the abilities to import different data and files.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    with __import__(&quot;tingle&quot;).Markdown(lazy=True):
+        import tingle.docs.testmd
+    assert tingle.docs.testmd.__file__.endswith(&quot;.md&quot;)
 
+def test_yml_import():
+</pre></div>
+</div>
+<p>test the abilities to import different data and files.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    with __import__(&quot;tingle&quot;).YAML(lazy=True):
+        import tingle.docs.testyml
+    assert tingle.docs.testyml.__file__.endswith(&quot;.md&quot;)
+    
+def test_xsh_import():
+    with __import__(&quot;tingle&quot;).loaders.XO(lazy=True):
+        import tingle.docs.testxo
 
-        foo: int = 42
-        
--->
+def test_schema():
+    with tingle.YAML(lazy=True):
+        import tingle.docs.testschema as module
+    import jsonschema
+    jsonschema.validate(dict(foo=&quot;xxx&quot;), module.data)
+    with pytest.raises(BaseException):
+        jsonschema.validate(dict(), module.data)
+</pre></div>
+</div>
+</div>
+
     <script type="text/x-thebe-config">
     {
         requestKernel: true,
@@ -261,7 +261,7 @@
         },
         kernelOptions: {
             kernelName: "python3",
-            path: "./tingle/tests"
+            path: "./tingle/docs"
         },
         predefinedOutput: true
     }
