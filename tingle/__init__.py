@@ -1,5 +1,5 @@
 """Tangling operations for different literate files."""
-__version__ = "0.1.0"
+__version__ = __import__("datetime").date.today().strftime("%Y.%m.%d")
 
 from . import md, rst, python, loaders, util, weave
 from .loaders import *
