@@ -24,7 +24,7 @@ tingle = "tingle.main:main"
 
 [tool.pytest.ini_options]
 addopts = """\
---nbval docs tingle/docs \
+--nbval docs tingle/docs readme.md \
 --sanitize-with docs/sanitize.cfg \
 -p no:warnings -p no:importnb -pno:pidgy\
 --doctest-glob="*.md" \
