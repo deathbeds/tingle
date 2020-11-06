@@ -7,7 +7,7 @@ from . import parameterize
 from .loaders import *
 
 with Markdown(lazy=True):
-    from . import yml
+    from . import yml, yml as yaml
 
 
 def load_ipython_extension(shell):
