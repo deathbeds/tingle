@@ -1,21 +1,53 @@
 # `tingle` tangle
 
-`tingle` is a library to __import__ modern markup and data languages
-into python programs. it provides machinery to _tangle_ code; a concept from literate programming that describes converting document into compiled program languages.
+`tingle` is a library to __import__ modern markup and data languages into python programs. it provides machinery to _tangle_ code from its document language to python modules. tangle is a concept from literate programming that describes converting document into compiled program languages.
 
-`tingle` allows folks to think about literature that can serve as programs and data.
+currently, `tingle` supports 
 
-`tingle` brings the ability to __import__ and test markdown, yaml, json, images, xonsh, and lisp literate programs as python modules.
+        from tingle import md, rst, yml, yaml
 
+`tingle` is primarily designed for interactive computing to generalize the reuse of code in different formats. `tingle` can be used with `jupyter` or `IPython` to import alternative document formats as python modules.
 
 `tingle` is a `pytest` extension that can test literate programs written
-in markdown or rst formats.
+in markdown or rst formats. it ensures that your documentation stays up to date with your code.
 
 ## importing literate programs and data
+
+`tingle` uses context managers to modify pythons conventional imports.
 
         import tingle
         with tingle.loaders.Markdown():
             ...
+
+`tingle.loaders.Markdown` is a loader that can discover notebooks with cells written in markdown and individual markdown files.
+
+context managers can combined into a single context manager.
+
+        import importnb
+        with importnb.Notebook(), tingle.loaders.Markdown():
+            ...
+
+or used in serial
+
+        with importnb.Notebook():
+            ...
+        with tingle.loaders.Markdown():
+            ...
+
+serial loading is necessary in the special case that two modules are loaded from files with the same name, but different extensions.
+
+### parameterized modules
+
+## fuzzy imports
+
+a feature of `importnb` is the discovery of invalidate python module names. consider a notebook that is a blog post. `1968-12-09-mother-of-all-demos.ipynb`
+
+        with tingle.loaders.Markdown():
+            try:
+                from .docs import _968_12_09_mother_of_all_demos, __mother_of_all_demos
+            except:
+                ...
+
 
 ## the `tingle` extension
 

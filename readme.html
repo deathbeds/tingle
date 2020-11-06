@@ -25,8 +25,8 @@
     href="_static/vendor/lato_latin-ext/1.44.1/index.css">
 
     
-    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.2d2078699c18a0efb88233928e1cf6ed.css" type="text/css" />
     <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
@@ -234,6 +234,18 @@
   <a class="reference internal nav-link" href="#importing-literate-programs-and-data">
    importing literate programs and data
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#parameterized-modules">
+     parameterized modules
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fuzzy-imports">
+   fuzzy imports
+  </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#the-tingle-extension">
@@ -271,17 +283,49 @@
                 
   <div class="section" id="tingle-tangle">
 <h1><code class="docutils literal notranslate"><span class="pre">tingle</span></code> tangle<a class="headerlink" href="#tingle-tangle" title="Permalink to this headline">¶</a></h1>
-<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> is a library to <strong>import</strong> modern markup and data languages
-into python programs. it provides machinery to <em>tangle</em> code; a concept from literate programming that describes converting document into compiled program languages.</p>
-<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> allows folks to think about literature that can serve as programs and data.</p>
-<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> brings the ability to <strong>import</strong> and test markdown, yaml, json, images, xonsh, and lisp literate programs as python modules.</p>
+<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> is a library to <strong>import</strong> modern markup and data languages into python programs. it provides machinery to <em>tangle</em> code from its document language to python modules. tangle is a concept from literate programming that describes converting document into compiled program languages.</p>
+<p>currently, <code class="docutils literal notranslate"><span class="pre">tingle</span></code> supports</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    from tingle import md, rst, yml, yaml
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> is primarily designed for interactive computing to generalize the reuse of code in different formats. <code class="docutils literal notranslate"><span class="pre">tingle</span></code> can be used with <code class="docutils literal notranslate"><span class="pre">jupyter</span></code> or <code class="docutils literal notranslate"><span class="pre">IPython</span></code> to import alternative document formats as python modules.</p>
 <p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> is a <code class="docutils literal notranslate"><span class="pre">pytest</span></code> extension that can test literate programs written
-in markdown or rst formats.</p>
+in markdown or rst formats. it ensures that your documentation stays up to date with your code.</p>
 <div class="section" id="importing-literate-programs-and-data">
 <h2>importing literate programs and data<a class="headerlink" href="#importing-literate-programs-and-data" title="Permalink to this headline">¶</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">tingle</span></code> uses context managers to modify pythons conventional imports.</p>
 <div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    import tingle
     with tingle.loaders.Markdown():
         ...
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">tingle.loaders.Markdown</span></code> is a loader that can discover notebooks with cells written in markdown and individual markdown files.</p>
+<p>context managers can combined into a single context manager.</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    import importnb
+    with importnb.Notebook(), tingle.loaders.Markdown():
+        ...
+</pre></div>
+</div>
+<p>or used in serial</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    with importnb.Notebook():
+        ...
+    with tingle.loaders.Markdown():
+        ...
+</pre></div>
+</div>
+<p>serial loading is necessary in the special case that two modules are loaded from files with the same name, but different extensions.</p>
+<div class="section" id="parameterized-modules">
+<h3>parameterized modules<a class="headerlink" href="#parameterized-modules" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="fuzzy-imports">
+<h2>fuzzy imports<a class="headerlink" href="#fuzzy-imports" title="Permalink to this headline">¶</a></h2>
+<p>a feature of <code class="docutils literal notranslate"><span class="pre">importnb</span></code> is the discovery of invalidate python module names. consider a notebook that is a blog post. <code class="docutils literal notranslate"><span class="pre">1968-12-09-mother-of-all-demos.ipynb</span></code></p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>    with tingle.loaders.Markdown():
+        try:
+            from .docs import _968_12_09_mother_of_all_demos, __mother_of_all_demos
+        except:
+            ...
 </pre></div>
 </div>
 </div>
